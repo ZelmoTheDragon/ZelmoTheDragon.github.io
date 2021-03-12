@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="ZelmoTheDragon">
+  <link rel="canonical" href="https://zelmothedragon.github.io/java/invoke_dynamic/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Invocation Dynamique - Zelmo Academy</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Invocation Dynamique";
+    var mkdocs_page_input_path = "java/invoke_dynamic.md";
+    var mkdocs_page_url = "/java/invoke_dynamic/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Zelmo Academy</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Accueil</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Java</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../">Sommaire</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../platform/">Plateforme</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../packaging/">Format binaire</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../organization/">Organisation du code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../java_bean/">Convention Java Bean</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../javadoc/">Documentation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../inheritance/">Héritage</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../polymorphism/">Polymorphisme</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../genericity/">Généricité</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Invocation Dynamique</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">` Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#introspection">Introspection</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#usage-basique">Usage basique</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#usage-avance">Usage avancé</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mise-en-uvre">` Mise en œuvre</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#principe-de-fonctionnement">Principe de fonctionnement</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cas-pratique-avance">Cas pratique avancé</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../functional_programming/">Programmation fonctionnelle</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../project_crud/">Projet de synthèse</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Zelmo Academy</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Java &raquo;</li>
+        
+      
+    
+    <li>Invocation Dynamique</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="invocation-dynamique">Invocation dynamique</h1>
+<h2 id="introduction">` Introduction</h2>
+<p>L'invocation dynamique est une technique avancée en Java pour appeler des méthodes sans posséder directement les objets concernés.</p>
+<p><strong>Avantages :</strong>
+  * Code plus dynamique
+  * Code plus générique</p>
+<p><strong>Inconvénient :</strong>
+  * Concept complexe
+  * Beaucoup plus verbeux</p>
+<blockquote>
+<p><strong>Note</strong>
+Contrairement aux idées reçues, l'invocation dynamique en Java et même plus rapide que l'appel classique de méthodes (Quand elle respecte les règles de visibilités).
+La <em>JVM</em> sait optimiser ce code.
+En revanche l'invocation par réflexion est à éviter, elle est plus lente car la <em>JVM</em> ne peut optimiser ce code.</p>
+</blockquote>
+<h2 id="introspection">Introspection</h2>
+<p>L'introspection est une technique avancée en Java permettant de parcourir la composition de la structure même d'un objet, ou d'une classe par le code.</p>
+<h3 id="usage-basique">Usage basique</h3>
+<pre><code class="language-java">package fr.zelmoacademy.model;
+
+public class Customer{
+
+    private String email;
+
+    public Customer(){ 
+    }
+
+    // Accesseurs &amp; Mutateurs
+    // ...
+}
+</code></pre>
+<pre><code class="language-java">var customer = new Customer();
+
+Field[] declaredFields = customer.getClass().getDeclaredFields();
+                                         ^^^^^^^^^^^^^^^^^-----// Récupération de tous les attributs
+                                                               // déclarés dans la classe 'Customer'.
+System.out.println(Arrays.toString(declaredFields)); 
+//&gt; Sortie console: 
+// [private java.lang.String fr.zelmoacademy.model.Customer.email]
+
+// On peut aussi faire l'instrospection de la classe directement
+// au lieu de passer par l'instance (*.getClass()).
+Method[] declaredMethods = Customer.class.getDeclaredMethods();
+                                     ^^^^^^^^^^^^^^^^^^-----// Récupération de toutes les méthodes
+                                                            // déclarés dans la classe 'Customer'.
+System.out.println(Arrays.toString(declaredMethods)); 
+//&gt; Sortie console: 
+// [
+//    public void fr.zelmoacademy.model.Customer.setEmail(java.lang.String), 
+//    public java.lang.String fr.zelmoacademy.model.Customer.getEmail()
+// ]
+
+Type superClass = customer.getClass().getGenericSuperClass();
+                                     ^^^^^^^^^^^^^^^^^^^^^----// Récupérer la classe parent
+System.out.println(superClass); 
+//&gt; Sortie console: 
+// class java.lang.Object
+
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>
+Avec l'introspection vous pouvez naviguez dans la structure d'un classe est voir toutes ses caractéristiques.
+cette approche permet en fonction de la structure d'un classe d'opter pour un comportement différent dans votre algorithme. </p>
+</blockquote>
+<h3 id="usage-avance">Usage avancé</h3>
+<p><strong>Problématique :</strong></p>
+<pre><code class="language-java">public class Customer { /* ... */ }
+</code></pre>
+<pre><code class="language-java">public abstract class AbstractDAO&lt;E&gt; {
+
+    // ...
+
+    // On ne connait pas 'E'.
+    // On délègue ce traitement aux classes enfants.
+    // Cette méthode est donc abstraite.
+    protected abstract Class&lt;E&gt; getEntityClass();
+}
+</code></pre>
+<pre><code class="language-java">public class CustomerDAO extends AbstractDAO&lt;Customer&gt; {
+
+    // ...
+
+    @Override
+    protected Class&lt;Customer&gt; getEntityClass(){
+        // La classe concrète résout la généricité
+        // Par conséquant, elle connait le type de 'E'
+        // Il suffit d'implémenter la méthode.
+        return Customer.class;
+    }
+}
+</code></pre>
+<p>Dans le code ci-dessus, on souhaite récupérer la classe de <code>E</code>.
+Pour se faire, une manière simple est de passer par l'héritage.
+Cette méthode est viable, mais que ce passe-t-il lorsqu'un nombre important de classe enfant de <code>AbstractDAO</code> se présente ?
+Est-il possible de factoriser ce code ?</p>
+<blockquote>
+<p><strong>Réponse</strong>
+OUI</p>
+</blockquote>
+<p><strong>Solution :</strong></p>
+<p>L'introspection permet aussi de récupérer le type d'un générique.</p>
+<pre><code class="language-java">public abstract class AbstractDAO&lt;E&gt; {
+
+    // ...
+
+    protected Class&lt;E&gt; getEntityClass(){
+        // Étant donné que c'est la classe parent qui possède la notation en diamant.
+        // On remonte donc vers cette dernière avec l'introspection.
+        // Il faut également transtyper la classe parent en 'ParameterizedType'.
+        // Cela permet de faire l'introspection sur la notation en diamant. 
+        var type = (ParameterizedType) this.getClass().getGenericSuperclass();
+
+        // La méthode 'getActualTypeArguments' permet de récupérer un tableau de tous les génériques.
+        // La classe parent 'AbstractDAO' n'en possède q'un, il est à l'index zéro du tableau.
+        // Encore une fois, il est nécessaire de transtyper le résultat en 'Class&lt;E&gt;'.
+        // Cela permet d'avoir le bon type de retour.
+        var entityClass (Class&lt;E&gt;) type.getActualTypeArguments()[0];
+
+        // Ainsi, on peut récupérer la classe de 'E' dynamiquement.
+        // Les classes enfants n'ont plus besoin d'implémenter cette méthode.
+        return entityClass;
+    }
+}
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>
+Malheureusement le transtypage est obligatoire ici.
+Java polymorphe les classes ici en <code>java.lang.reflect.Type</code>.
+Cette interface permet à Java d'englober les notions : de variables, de primitives, de tableaux, de génériques et même de type brute.</p>
+</blockquote>
+<h2 id="mise-en-uvre">` Mise en œuvre</h2>
+<h3 id="principe-de-fonctionnement">Principe de fonctionnement</h3>
+<p>Pour utiliser l'invocation dynamique, il est nécessaire d'observer quelques règles :
+  * Respecter la visibilité des attributs, des méthodes, des classes.
+  * Ne pas outrepasser cette visibilité
+  * Être extrêmement précis avec les paramètres lors de l'invocation dynamique. </p>
+<p>On conserve cette classe pour la démonstration.</p>
+<pre><code class="language-java">package fr.zelmoacademy.model;
+
+public class Customer{
+
+    private String email;
+
+    public Customer(){ 
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                &quot;Customer{email=%s}&quot;,
+                email
+        );
+    }
+
+    // Accesseurs &amp; Mutateurs
+    // ...
+}
+</code></pre>
+<pre><code class="language-java">var customer = new Customer();
+System.out.println(customer);
+//&gt; Sortie console:
+// Customer{email=null}
+
+// On souhaite changer la valeur de l'attribut 'email' par invocation dynamique.
+
+// On récupère une instance de travail pour utiliser l'invocation dynamique.
+var lookup = MethodHandles.publicLookup();
+
+// On prépare la signature de la méthode cible avec le type de retour:
+// 1er paramètre: Type de retour.
+// 2nd paramètre: Type du premier argument.
+var setEmailSignature = MethodType.methodType(void.class, String.class);
+
+// On récupère la méthode cible:
+// 1er paramètre: Type de classe source.
+// 2e paramètre: Nom exact de la méthode cible à invoquer.
+// 3e paramètre: Type de retour et paramètre de la méthode cible à invoquer.
+// On obtiens une méthode d'instance mais rattachée à aucun objet:  '.setEmail()'.
+var setEmailHandler = lookup.findVirtual(
+        Customer.class,
+        &quot;setEmail&quot;,
+        setEmailSignature
+    );
+
+// Lier la méthode dynamique avec l'instance réelle.
+// On obtiens une méthode d'instance rattaché à un objet: 'customer.setEmail()'.
+var setEmailBinded = setEmailHandler.bindTo(customer);
+
+// Invocation dynamique
+// On appel la méthode avec les bons paramètres: 'customer.setEmail(&quot;john.doe@sample.com&quot;)'.
+setEmailBinded.invokeExact(&quot;john.doe@sample.com&quot;); 
+
+System.out.println(customer);
+//&gt; Sortie console:
+// Customer{email=john.doe@sample.com}
+
+</code></pre>
+<h3 id="cas-pratique-avance">Cas pratique avancé</h3>
+<p>Comment générer le résultat d'un méthode <code>toString</code> de manière générique pour n'importe quel type d'objet ?</p>
+<blockquote>
+<p>A vous de coder !</p>
+</blockquote>
+<p><strong>Possible solution :</strong></p>
+<pre><code class="language-java">package fr.zelmoacademy.util;
+
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodType;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Objects;
+
+/**
+ * Utilitaire pour la génération de la méthode &lt;b&gt;toString&lt;/b&gt; des objets.
+ */
+public final class ToString {
+
+    /**
+     * Constructeur interne. Pas d'instanciation.
+     */
+    private ToString() {
+        throw new UnsupportedOperationException(&quot;No instance for you&quot;);
+    }
+
+    /**
+     * Générer grâce à l'invocation dynamique l'équivalent de la méthode &lt;b&gt;toString&lt;/b&gt;
+     * pour n'importe quel type d'objet.
+     * Cette méthode utilise l'appel des accesseurs, 
+     * idéalement les objets devraient suivre la convention &lt;b&gt;JavaBean&lt;/b&gt;.
+     *
+     * @param o Instance quelconque
+     * @return Une chaîne de caractères représentant les données de cet objet.
+     */
+    public static String generateDynamicToString(final Object o) {
+
+        var fields = new ArrayList&lt;Field&gt;();
+        var getters = new ArrayList&lt;Method&gt;();
+        var objectClass = o.getClass();
+        do {
+            // Récupération de tous les attributs de la classe.
+            var declaredFields = objectClass.getDeclaredFields();
+            Collections.addAll(fields, declaredFields);
+
+            // Récupération de tous les accesseurs.
+            var declaredMethods = objectClass.getDeclaredMethods();
+            Collections.addAll(getters, declaredMethods);
+
+            // Continuer tant que la classe parent n'est pas 'java.lang.Object'.
+            // Ce qui permet de récupérer les attributs et accesseurs des classes parent.
+            objectClass = (Class&lt;?&gt;) objectClass.getGenericSuperclass();
+        } while (!Objects.equals(objectClass, Object.class));
+
+        // Récupération de l'instance de travail pour utiliser l'invocation dynamique.
+        var lookup = MethodHandles.publicLookup();
+
+        // Préparation de la chaîne de caractères finale.
+        var text = new StringBuilder();
+        text.append(o.getClass().getName());
+        text.append(&quot;{&quot;);
+
+        try {
+            for (Field f : fields) {
+
+                // Récupération du le nom de l'attribut.
+                var name = f.getName();
+
+                // Récupération du type de l'attribut.
+                var type = f.getType();
+
+                // Construction du préfix de l'accesseur.
+                String getterPrefix;
+                if (!Objects.equals(type, boolean.class)) {
+                    getterPrefix = &quot;get&quot;;
+                } else {
+                    // Attention pour un attribut de type 'boolean'
+                    // l'accesseur commence par 'is'.
+                    getterPrefix = &quot;is&quot;;
+                }
+
+                // Construction du suffixe de l'accesseur.
+                // Mettre la première lettre du nom de l'attribut en majuscule.
+                String getterSuffix;
+                if (name.length() &gt; 1) {
+                    getterSuffix = name.substring(0, 1).toUpperCase() + name.substring(1);
+                } else {
+                    getterSuffix = name.toUpperCase();
+                }
+
+                // Construction du nom de la méthode de l'accesseur.
+                var getterName = getterPrefix + getterSuffix;
+
+                // Recherche de l'accesseur parmi les méthodes existantes avec les critères suivants:
+                // - Nom de méthode identique
+                // - Type de retour: 'void'
+                // - Pas de paramètre
+                // - Méthode publique.
+                // L'objectif est de vérifier l’existence d'un accesseur pour un attribut donné.
+                // (Respect de la convention JavaBean)
+                var getter = getters
+                        .stream()
+                        .filter(m -&gt; Objects.equals(m.getName(), getterName))
+                        .filter(m -&gt; !Objects.equals(m.getReturnType(), void.class))
+                        .filter(m -&gt; m.getParameterCount() == 0)
+                        .filter(m -&gt; m.getModifiers() == MethodHandles.Lookup.PUBLIC)
+                        .findFirst();
+
+                // Si l'accesseur existe, l'invocation peut commencer
+                // Sinon pas d'invocation pour cet attribut.
+                if (getter.isPresent()) {
+
+                    // On prépare la signature de la méthode cible avec le type de retour
+                    var getterSignature = MethodType.methodType(type);
+
+                    // On récupère la méthode cible
+                    var getterHandler = lookup.findVirtual(
+                            o.getClass(),
+                            getterName,
+                            getterSignature
+                    );
+
+                    // Lier la méthode dynamique avec l'instance réelle.
+                    var getterBinded = getterHandler.bindTo(o);
+
+                    // Invocation dynamique
+                    var getterValue = getterBinded.invoke();
+
+                    // Construction de la chaîne de caractères.
+                    text.append(name);
+                    text.append(&quot;=&quot;);
+                    text.append(getterValue);
+                    text.append(&quot;, &quot;);
+                }
+            }
+        } catch (Throwable ex) {
+            // L'invocation dynamique peut lever une exception si elle est mal réalisée.
+            // L'exception n'est pas traitée à ce niveau.
+            throw new IllegalStateException(ex);
+        }
+
+        // Supprimer des derniers caractères superflus.
+        var index = text.lastIndexOf(&quot;,&quot;);
+        var offset = 2;
+        if (index &gt;= 0 &amp;&amp; text.length() &gt; offset) {
+            text.setLength(text.length() - offset);
+        }
+
+        // Fin de construction de la chaîne de caractères.
+        text.append(&quot;}&quot;);
+        return text.toString();
+    }
+}
+</code></pre>
+<p>Usage:</p>
+<pre><code class="language-java">package fr.zelmoacademy.model
+
+import fr.zelmoacademy.util.ToString;
+
+public class Customer{
+
+    private String givenName;
+    private String familyName;
+    private String email;
+
+    // Constructeurs
+    // ...
+
+    @Override
+    public String toString(){
+        // Nouvelle implémentation.
+        return ToString.generateDynamicToString(this);
+    }
+
+
+    // Accesseurs &amp; Mutateurs
+    // ...
+
+
+    public static void main(String[] args){
+
+        var customer = new Customer(&quot;John&quot;, &quot;DOE&quot;, &quot;john.doe@example.com&quot;);
+        System.out.println(customer);
+        //&gt; Sortie console:
+        // fr.zelmoacademy.model.Customer{givenName=John, familyName=DOE, email=john.doe@example.com}
+    }
+}
+
+
+
+</code></pre>
+<hr />
+<p>[[dev:java:index|Retour au sommaire]]</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../functional_programming/" class="btn btn-neutral float-right" title="Programmation fonctionnelle">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../genericity/" class="btn btn-neutral" title="Généricité"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/ZelmoTheDragon/ZelmoTheDragon.github.io" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../genericity/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../functional_programming/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

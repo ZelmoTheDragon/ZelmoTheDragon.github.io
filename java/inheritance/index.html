@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="ZelmoTheDragon">
+  <link rel="canonical" href="https://zelmothedragon.github.io/java/inheritance/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Héritage - Zelmo Academy</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "H\u00e9ritage";
+    var mkdocs_page_input_path = "java/inheritance.md";
+    var mkdocs_page_url = "/java/inheritance/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Zelmo Academy</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Accueil</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Java</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../">Sommaire</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../platform/">Plateforme</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../packaging/">Format binaire</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../organization/">Organisation du code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../java_bean/">Convention Java Bean</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../javadoc/">Documentation</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Héritage</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mise-en-uvre">Mise en œuvre</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#point-particulier">Point particulier</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cas-dusage">Cas d'usage</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../polymorphism/">Polymorphisme</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../genericity/">Généricité</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../invoke_dynamic/">Invocation Dynamique</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../functional_programming/">Programmation fonctionnelle</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../project_crud/">Projet de synthèse</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Zelmo Academy</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Java &raquo;</li>
+        
+      
+    
+    <li>Héritage</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="heritage">Héritage</h1>
+<h2 id="introduction">Introduction</h2>
+<p>L'héritage est un concept de la <strong>programmation orientée objet</strong>.</p>
+<p><strong>Il permet de :</strong></p>
+<ul>
+<li>Déterminer une hiérarchie dans les classes et les regrouper par familles.</li>
+<li>Factoriser des comportements et des caractéristiques communes.</li>
+<li>Redéfinir des comportements. </li>
+</ul>
+<p><strong>Caractéristiques du langage Java :</strong></p>
+<ul>
+<li>Toutes classes Java hérite de <code>java.lang.Object</code>.</li>
+<li>Une classe <strong>concrète</strong> ou <strong>abstraite</strong> ne peut hériter que d'une seule classe <strong>concrète</strong> ou <strong>abstraite</strong>.</li>
+<li>Une classe <strong>concrète</strong> ou <strong>abstraite</strong> peut hériter de plusieurs <strong>interfaces</strong>.</li>
+<li>Une <strong>interface</strong> peut hériter de plusieurs <strong>interfaces</strong>.</li>
+<li>Une <strong>énumération</strong> ne peut pas être héritée, ou hériter de classes, mais il peut implémenter des <strong>interfaces</strong>.</li>
+<li>Une <strong>annotation</strong> ne supporte pas l'héritage, mais bizarrement peut être héritée.</li>
+</ul>
+<h2 id="mise-en-uvre">Mise en œuvre</h2>
+<p>Quelques <strong>mots clef</strong> sont à connaitre pour utiliser l'héritage en Java:</p>
+<ul>
+<li><strong>protected</strong> : Niveau de visibilité protégé, visible par les classes enfants et classe du même <em>package</em>.</li>
+<li><strong>extends</strong> : Dans la déclaration d'une classe, permet de spécifier la classe à hériter.</li>
+<li><strong>implements</strong> : Dans la déclaration d'une classe, permet de spécifier les interfaces à hériter.</li>
+<li><strong>final</strong> :<ul>
+<li>Dans la déclaration d'une classe, bloque l'héritage de cette dernière (pas de classes enfants possibles).</li>
+<li>Dans la déclaration d'une méthode, bloque la redéfinition de méthode pour les classes enfants.</li>
+</ul>
+</li>
+</ul>
+<h2 id="point-particulier">Point particulier</h2>
+<p><strong>Héritage pour une classe :</strong></p>
+<pre><code class="language-java">public abstract class AbstractEntity { /* ... */ }
+
+public class Cutomer extends AbstractEntity implements Serializable, Comparable&lt;Customer&gt; {
+    /* ... */
+}
+</code></pre>
+<p><strong>Héritage pour une interface :</strong></p>
+<pre><code class="language-java">public interface Repository&lt;E&gt; { /* ... */ }
+
+public interface CustomerRepository extends Serializable, Repository&lt;Customer&gt; {
+    /* ... */
+}
+</code></pre>
+<h2 id="cas-dusage">Cas d'usage</h2>
+<p>Considérons les classes suivantes:</p>
+<pre><code class="language-java">package fr.zelmoacademy.sample;
+
+import java.time.LocalDate;
+
+public class Cat {
+
+    private String name;
+    private Float size;
+    private Float weight;
+    private LocalDate birthDate;
+
+    public Cat() {
+    }
+
+    public void talk() {
+        System.out.println(&quot;Meow&quot;);
+    }
+
+    public void sleep() {
+        System.out.println(&quot;Purrr&quot;);
+    }
+
+    public void huntMice() {
+        // ...
+    }
+
+    // Accesseurs &amp; Mutateurs
+    // ...
+}
+</code></pre>
+<pre><code class="language-java">package fr.zelmoacademy.sample;
+
+import java.time.LocalDate;
+
+public class Dog {
+
+    private String name;
+    private Float size;
+    private Float weight;
+    private LocalDate birthDate;
+
+    public Dog() {
+    }
+
+    public void talk() {
+        System.out.println(&quot;Woof&quot;);
+    }
+
+    public void sleep() {
+        System.out.println(&quot;Zzz&quot;);
+    }
+
+    public void sniff() {
+        // ...
+    }
+
+    // Accesseurs &amp; Mutateurs
+    // ...
+}
+</code></pre>
+<p>Cet exemple caricatural met en évidence des caractéristiques communes entre les deux classes.
+On peut donc factoriser du code dans une <strong>classe abstraite</strong> :</p>
+<pre><code class="language-java">package fr.zelmoacademy.sample;
+
+import java.time.LocalDate;
+import java.time.Period;
+
+// Mot clef 'abstract' pour indiquer que cette classe est abstraite
+// et donc ne peut pas être instancier directement.
+public abstract class Pet {
+
+    // Attributs à visibilité 'protected'
+    // Visible par les classes enfants et les classes du même 'package'.
+
+    protected String name;
+    protected Float size;
+    protected Float weight;
+    protected LocalDate birthDate;
+
+    // Constructeur par défaut
+    // Visibilité 'protected' recommandée.
+    protected Pet() {
+    }
+
+    // Méthode abstraite
+    // Les classes enfants seront obligées de définir un comportement.
+    public abstract void talk();
+
+    // Méthode concrète
+    // Les classes enfants peuvent redéfinir un comportement.
+    public void sleep() {
+        System.out.println(&quot;...zzz...&quot;);
+    }
+
+    // Mot clef 'final'.
+    // Méthode concrète verrouillée.
+    // Les classes enfants ne peuvent pas la redéfinir. 
+    public final Period getAge(){
+        return Period.between(LocalDate.now(), birthDate);
+    }
+
+    // Accesseurs &amp; Mutateurs
+    // ...
+}
+</code></pre>
+<p>Nouvelles classes réusinées :</p>
+<pre><code class="language-java">package fr.zelmoacademy.sample;
+
+// Mot clef 'exetends' pour spécifier le nom de la classe parente.
+public class Cat extends Pet {
+
+    public Cat() {
+    }
+
+    // Annotation 'Override'
+    // Implémente le comportement spécifique à cette classe.
+    @Override
+    public void talk() {
+        System.out.println(&quot;Meow&quot;);
+    }
+
+    // Annotation 'Override'
+    // Implémente le comportement spécifique à cette classe.
+    // Ne tient pas en compte le comportement de la classe parente.
+    @Override
+    public void sleep() {
+        System.out.println(&quot;Purrr&quot;);
+    }
+
+    // Méthode spécifique à cette classe.
+    public void huntMice() {
+        // ...
+    }
+
+}
+</code></pre>
+<pre><code class="language-java">package fr.zelmoacademy.sample;
+
+// Mot clef 'exetends' pour spécifier le nom de la classe parente.
+// Mot clef 'final', cette classe ne peut plus être héritée.
+public final class Dog extends Pet {
+
+    public Dog() {
+    }
+
+    // Annotation 'Override'
+    // Implémente le comportement spécifique à cette classe.
+    @Override
+    public void talk() {
+        System.out.println(&quot;Woof&quot;);
+    }
+
+    // Annotation 'Override'
+    // Implémente le comportement spécifique à cette classe.
+    // Ne tient pas en compte le comportement de la classe parente.
+    @Override
+    public void sleep() {
+
+        // Invocation de la méthode parente, tel qu'elle a été définit par cette dernière.
+        super.sleep();
+
+        // Implémentation spécifique de cette classe.
+        System.out.println(&quot;Zzz&quot;);
+    }
+
+    // Méthode spécifique à cette classe.
+    public void sniff() {
+        // ...
+    }
+
+}
+</code></pre>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../polymorphism/" class="btn btn-neutral float-right" title="Polymorphisme">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../javadoc/" class="btn btn-neutral" title="Documentation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/ZelmoTheDragon/ZelmoTheDragon.github.io" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../javadoc/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../polymorphism/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

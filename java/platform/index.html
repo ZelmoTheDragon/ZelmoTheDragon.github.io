@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="ZelmoTheDragon">
+  <link rel="canonical" href="https://zelmothedragon.github.io/java/platform/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Plateforme - Zelmo Academy</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Plateforme";
+    var mkdocs_page_input_path = "java/platform.md";
+    var mkdocs_page_url = "/java/platform/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Zelmo Academy</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Accueil</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Java</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../">Sommaire</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Plateforme</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#composition-des-plateformes">Composition des plateformes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#vision-globale">Vision globale</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#java-se">Java SE</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#java-ee">Java EE</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../packaging/">Format binaire</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../organization/">Organisation du code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../java_bean/">Convention Java Bean</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../javadoc/">Documentation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../inheritance/">Héritage</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../polymorphism/">Polymorphisme</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../genericity/">Généricité</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../invoke_dynamic/">Invocation Dynamique</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../functional_programming/">Programmation fonctionnelle</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../project_crud/">Projet de synthèse</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Zelmo Academy</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Java &raquo;</li>
+        
+      
+    
+    <li>Plateforme</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="plateforme">Plateforme</h1>
+<h2 id="introduction">Introduction</h2>
+<p>La plateforme Java se décline en deux éditions :
+  * <strong>Java SE</strong>: <em>Java Standard Edition</em>
+  * <strong>Java EE</strong>: <em>Java Enterprise Edition</em></p>
+<p>Une édition est un ensemble de bibliothèques logicielles et d'outils intégrés à la plateforme.</p>
+<p><strong>Java SE</strong> est l'édition contenue par défaut lorsque vous installez Java que ce soit <em>OracleJDK</em>, <em>OpenJDK</em> ou encore <em>AdoptOpenJDK</em>.</p>
+<p><strong>Java EE</strong> est l'édition contenue dans les serveurs d'applications certifiés <strong>Java EE</strong>. Exemple : <em>Wildfly</em>, <em>Glassfish</em>, <em>Payara</em>, <em>WebLogic</em>, etc...</p>
+<p>Le serveur <em>Apache Tomcat</em> n'est pas certifié car il n'implémente qu'une partie de la spécification Java EE, principalement les <em>Servlet</em>. C'est un choix assumé.</p>
+<blockquote>
+<p><strong>Note</strong>
+Après l'arrivée de <strong>Java EE 8</strong>, Oracle à l'abandon de cette édition. C'est désormais la Fondation Eclipse qui reprend ce projet sous le nom de de <strong>Jakarta EE</strong>.
+Afin d'effectuer la transition en douceur, la Fondation Eclipse a publiée <strong>Jakarta EE 8</strong>, une version intermédiaire pour le passage à Java 11. Mais attendez-vous à une perte de rétrocompatibilité avec <strong>Jakarta EE 9</strong>.</p>
+</blockquote>
+<h2 id="composition-des-plateformes">Composition des plateformes</h2>
+<h3 id="vision-globale">Vision globale</h3>
+<p><img alt="Composition des plateformes" src="https://fr.wikipedia.org/wiki/Plate-forme_Java#/media/Fichier:Java_Platforms.PNG" /></p>
+<p><sub>Source: Wikipédia</sub></p>
+<p><strong>Légende:</strong>
+  * <strong><em>JRE</em></strong>: <em>Java Runtime Environment</em>
+    * Environnement minimal pour l'exécution de programme Java.
+  * <strong><em>JRE Library</em></strong><br />
+    * Ensemble de bibliothèques logicielles standard.
+  * <strong><em>JVM</em></strong>: <em>Java Virtual Machine</em>
+    * Machine virtuelle permettant l'exécution du code compilé Java et de d'autres langages basés sur la <em>JVM</em>.
+  * <strong><em>JDK</em></strong>: <em>Java Development Kit</em>
+    * Ensemble d'outil fournit avec une plateforme pour le développement. (Exemple: le compilateur)
+  * <strong><em>JSR</em></strong>: <em>Java Specification Requests</em>
+    * Ensemble de spécification normalisé faisant évoluer la plateforme. Les <em>JSR</em> sont validés par une communauté (<em>JCP: Java Community Process</em>) avant d'intégrer une plateforme.
+  * <strong><em>Java SE</em></strong>: <em>Java Standard Edition</em>
+    * Plateforme de base de Java, il existe des variantes : avec ou sans <em>JDK</em>.
+  * <strong><em>Java EE</em></strong>: <em>Java Enterprise Edition</em>
+    * Plateforme d'entreprise Java, il existe des variantes: <em>Web Profile</em>, <em>Full Profile</em> ...
+  * <strong><em>Java FX</em></strong>
+    * Ensemble de bibliothèques logicielles pour la création de client lourd, successeur de <em>Swing</em>.      </p>
+<h4 id="java-se">Java SE</h4>
+<p><img alt="Plateforme Java SE" src="https://www.oracle.com/ocom/groups/public/@otn/documents/digitalasset/2167990.jpg" /></p>
+<p><sub>Source: Oracle</sub></p>
+<p>Voici en détail le contenu de la plateforme <strong>Java SE 8</strong>.</p>
+<blockquote>
+<p><strong>Note</strong>
+En <strong>Java 1.8</strong>, <em>Java FX</em> faisait partie intégrante de <em>Java SE</em>.
+A partir de <strong>Java 9</strong>, <em>Java FX</em> est une plateforme indépendante.</p>
+</blockquote>
+<h4 id="java-ee">Java EE</h4>
+<p><img alt="Plateforme Java EE" src="https://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/9f78fc09-faec-4068-82bd-09e7cc8bbf34/File/8f333305d54fb607858e1c48730313b2/screen_shot_2017_08_23_at_5_55_26_pm.png" /></p>
+<p><sub>Source: Oracle</sub></p>
+<p>Voici en détail le contenu de la plateforme <strong>Java EE 8</strong>.
+Le contenu reste similaire pour <strong>Jakarta EE 8</strong>.</p>
+<p>En bleu foncé, les briques logicielles mise à jour depuis <em>Java EE 7</em>.
+En orange, les nouvelles briques logicielles ajoutées en <em>Java EE 8</em>.</p>
+<p><strong>Détail de quelques technologies principalement utilisées:</strong></p>
+<ul>
+<li><strong>Bean Validation</strong><ul>
+<li>Validation de données à l'aide d'annotations.</li>
+</ul>
+</li>
+<li><strong>JTA</strong>: <em>Java Transaction API</em><ul>
+<li>Technologie de gestion des transactions pour les base de données. </li>
+</ul>
+</li>
+<li><strong>Servlet</strong> <ul>
+<li>Technologie permettant la communication client-serveur à travers de requête et de réponse sur le réseau, principalement utilisé avec le protocole <em>HTTP</em>.</li>
+</ul>
+</li>
+<li><strong>CDI</strong>: <em>Context Dependency Injection</em><ul>
+<li>Technologie d'injection de dépendance, elle gère le cycle de vie des objets injectables. Permet également une approche événementielle dans le code.</li>
+</ul>
+</li>
+<li><strong>EJB</strong>: <em>Enterprise Java Bean</em><ul>
+<li>Technologie utilisée pour la logique de traitement.</li>
+</ul>
+</li>
+<li><strong>JSF</strong>: <em>Java Server Faces</em><ul>
+<li>Technologie de création de page web orienté composant.</li>
+</ul>
+</li>
+<li><strong>JPA</strong>: <em>Java Persistence API</em><ul>
+<li>Technologie de persistance de données pour les base de données.  </li>
+</ul>
+</li>
+<li><strong>JAX-RS</strong><ul>
+<li>Technologie pour la construction de service web de type <em>REST</em>.</li>
+</ul>
+</li>
+<li><strong>JSON-P</strong><ul>
+<li>Technologie pour la manipulation de fichier <em>JSON</em>.</li>
+</ul>
+</li>
+<li><strong>JAX-WS</strong><ul>
+<li>Technologie pour la construction de service web de type <em>SOAP</em>.</li>
+</ul>
+</li>
+<li><strong>JSP</strong><ul>
+<li>Ancienne technologie pour la construction de page web.</li>
+</ul>
+</li>
+<li><strong>WebSocket</strong><ul>
+<li>Technologie de communication bidirectionnelle client-serveur.</li>
+</ul>
+</li>
+<li><strong>JAXB</strong><ul>
+<li>Ancienne technologie pour le support du format <em>XML</em>.</li>
+</ul>
+</li>
+<li><strong>JSON-B</strong><ul>
+<li>Nouvelle technologie en complément de <em>JSON-P</em> pour la conversion au format <em>JSON</em> à l'aide d'annotation.  </li>
+</ul>
+</li>
+<li><strong>Security</strong><ul>
+<li>Nouvelle technologie pour sécuriser une application <em>Jakarta EE</em>.     </li>
+</ul>
+</li>
+</ul>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../packaging/" class="btn btn-neutral float-right" title="Format binaire">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../" class="btn btn-neutral" title="Sommaire"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/ZelmoTheDragon/ZelmoTheDragon.github.io" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../packaging/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

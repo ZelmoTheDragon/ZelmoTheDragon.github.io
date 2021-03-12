@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="ZelmoTheDragon">
+  <link rel="canonical" href="https://zelmothedragon.github.io/java/project_crud/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Projet de synthèse - Zelmo Academy</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Projet de synth\u00e8se";
+    var mkdocs_page_input_path = "java/project_crud.md";
+    var mkdocs_page_url = "/java/project_crud/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Zelmo Academy</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Accueil</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Java</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../">Sommaire</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../platform/">Plateforme</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../packaging/">Format binaire</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../organization/">Organisation du code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../java_bean/">Convention Java Bean</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../javadoc/">Documentation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../inheritance/">Héritage</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../polymorphism/">Polymorphisme</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../genericity/">Généricité</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../invoke_dynamic/">Invocation Dynamique</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../functional_programming/">Programmation fonctionnelle</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Projet de synthèse</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#preparatif">Préparatif</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#couche-de-persistance">Couche de persistance</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#entite">Entité</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#convertisseur-dattribut">Convertisseur d'attribut</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#alignement-cdi">Alignement CDI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#entrepot">Entrepôt</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#couche-de-services">Couche de services</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#variante-cdi">Variante CDI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#couche-de-controle">Couche de contrôle</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#entite-dynamique">Entité dynamique</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#convertisseur-dynamique">Convertisseur dynamique</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#controleur">Contrôleur</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#gestion-des-exceptions">Gestion des exceptions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#axe-damelioration">Axe d'amélioration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Zelmo Academy</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Java &raquo;</li>
+        
+      
+    
+    <li>Projet de synthèse</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="projet-de-synthese">Projet de synthèse</h1>
+<h2 id="introduction">Introduction</h2>
+<p>L'objectif de cet article est de réaliser une application <em>REST (</em><em>RE</em><em>presentational </em><em>S</em><em>tate </em><em>T</em><em>ransfer)</em> en Java avec les technologies <em>Jakarta EE 8</em>.
+Le format d'échange de donnée sera <em>JSON (</em><em>J</em><em>ava</em><em>S</em><em>cript </em><em>O</em><em>bject </em><em>N</em><em>otation)</em>.</p>
+<p>Il s’agira d'une simple application <strong><em>CRUD</em>* (</strong>C<strong>reate </strong>R<strong>ead </strong>U<strong>pade </strong>D*<em>elete)</em>. Sans logique métier particulier.</p>
+<blockquote>
+<p>Nom de code : <strong>Dyna</strong>
+Une application dynamique et générique pour les opérations de <em>CRUD</em>.</p>
+</blockquote>
+<h2 id="preparatif">Préparatif</h2>
+<p>Pour réaliser ce projet, nous utiliserons :</p>
+<ul>
+<li>Java 11</li>
+<li>Payara Server 5.X</li>
+<li>Maven 3.6.X</li>
+</ul>
+<p>Pas besoin de bibliothèque logicielle supplémentaire.</p>
+<p><strong>Arborescence du projet :</strong></p>
+<pre><code> + fr.zelmoacademy.dyna
+   + common
+     - controller
+     - persistence
+     - service
+     - util
+   - feature1
+   - feature2  
+   - ...
+</code></pre>
+<p>Légende:
+  * <code>fr.zelmoacademy.dyna</code>: <em>package</em> racine du projet.
+  * <code>common</code>: Partie commune de tout le projet (c'est ici que nous travaillerons).
+  * <code>controller</code>: Partie contrôleur <em>REST</em>.
+  * <code>persistence</code>: Partie modèle et persistance en base de données.
+  * <code>service</code>: Partie traitement applicatif.
+  * <code>util</code>/ Classe utilitaire.
+  * <code>feature1</code>, <code>feature2</code>, ... : Partie spécifique à une zone fonctionnelle.</p>
+<blockquote>
+<p><strong>Note</strong>
+Afin de simplifier la structure du projet, l'application sera une archive de type <strong>WAR</strong>.
+Mais rien ne vous empêche d'utiliser le format <strong>EAR</strong>.</p>
+</blockquote>
+<h2 id="couche-de-persistance">Couche de persistance</h2>
+<h3 id="entite">Entité</h3>
+<p>Pour réduire la quantité de ligne de code, les entités persistances seront manipulées dans toutes les couches de notre architecture logicielle.
+Pour cela nous utiliserons les annotations <em>Jakarta EE</em> pour :
+  * Réaliser la liaison avec la base données (avec <strong>JPA</strong>.
+  * Réaliser la conversion au format <em>JSON</em> (avec <strong>JSON-B</strong>).
+  * Porter les contraintes de validation des attributs (avec <strong>BeanValidation</strong>).</p>
+<p>Afin de regrouper nos entités sous une même hiérarchie de classe, nous codons cette interface commune à toutes les entités:</p>
+<pre><code class="language-java">package fr.zelmoacademy.dyna.common.persistence;
+
+// Utilisation de la généricité pour typer la clef primaire.
+public interface Identifiable&lt;K&gt; {
+
+    // Vérifie l'état de la clef primaire.
+    // Si la valeur n'est pas définie, elle sera alors générée.
+    // Sera utile plus tard pour différencier une création d'une mise à jour.
+    void checkId();
+
+    // Simple accesseur &amp; mutateur de la clef primaire.
+
+    K getId();
+
+    void setId(K id);
+
+}
+</code></pre>
+<p>Pour plus de facilité, voici un exemple de classe mère afin de factoriser du code :</p>
+<pre><code class="language-java">package fr.zelmoacademy.dyna.common.persistence;
+
+import ...
+
+ // JSON-B: Trier les attributs par ordre alphabétique
+@JsonbPropertyOrder(PropertyOrderStrategy.LEXICOGRAPHICAL) 
+
+// JPA: Indique que les attributs de cette classe seront fusionnés dans la table SQL enfant.
+@MappedSuperclass 
+
+// Implémenter 'Identifiable' avec une clef primaire de type 'UUID'.
+public abstract class AbstractEntity implements Identifiable&lt;UUID&gt;, Serializable {
+
+    // Numéro de série pour respecter le mécanisme de sérialisation.
+    private static final long serialVersionUID = 1L;
+
+    // BeanValidation: Contrainte non nulle.
+    @NotNull
+
+    // JSON-B: Nom et contrainte de l'attribut pour le format JSON.
+    @JsonbProperty(value = &quot;id&quot;, nillable = true)
+
+    // JPA: Clef primaire
+    @Id
+
+    // JPA: Nom et contrainte de la colonne en base de données.
+    // /!\ Ce type n'est pas géré nativement par JPA, on explicite le type SQL 'VARCHAR(36)'.
+    @Column(name = &quot;id&quot;, nullable = false, unique = true, columnDefinition = &quot;VARCHAR(36)&quot;)
+    protected UUID id;
+
+    // BeanValidation: Contrainte non nulle.
+    @NotNull
+
+    // JSON-B: Nom et contrainte de l'attribut pour le format JSON.
+    @JsonbProperty(value = &quot;version&quot;, nillable = true)
+
+    // JPA: Numéro de version du tuple en base de données, s'incrémente à chaque modification.
+    @Version
+
+    // JPA: Nom et contrainte de la colonne en base de données.
+    @Column(name = &quot;version&quot;, nullable = false)
+    protected Long version;
+
+    // Java Bean: Constructeur par défaut.
+    protected AbstractEntity() {
+        this.id = UUID.randomUUID();
+        this.version = 0L;
+    }
+
+    // Surchage des méthodes: 'equals', 'hashCode', 'toString'
+    // ...
+
+    @Override
+    public void checkId(){
+      // Dans notre cas, c'est l'application qui assure
+      // l'intégrité de la clef primaire.
+      if(Objects.isNull(id){
+        id = UUID.randomUUID();
+      }
+      if(Objects.isNull(version){
+        version = 0L;
+      }
+     }
+
+    // Accesseurs &amp; Mutateurs
+    // ...
+
+}
+</code></pre>
+<p><strong>Exemple d'entité concrète :</strong></p>
+<pre><code class="language-java">package fr.zelmoacademy.dyna.customer;
+
+import ...;
+
+
+// CDI: Cette classe est injectable
+@Dependent
+
+// JSON-B: Trier les attributs par ordre alphabétique
+@JsonbPropertyOrder(PropertyOrderStrategy.LEXICOGRAPHICAL)
+
+// JPA: Entité persistante liée à la table 'customer' en base de données.
+@Entity
+@Table(name = &quot;customer&quot;)
+public class Customer extends AbstractEntity {
+
+    private static final long serialVersionUID = 1L;
+
+    // BeanValidation: Contrainte non vide.
+    @NotBlank
+
+    // JSON-B: Nom et contrainte de l'attribut pour le format JSON.
+    @JsonbProperty(value = &quot;givenName&quot;, nillable = false)
+
+    // JPA: Nom et contrainte de la colonne en base de données.
+    @Column(name = &quot;given_name&quot;, nullable = false)
+    private String givenName;
+
+
+    // BeanValidation: Contrainte non vide.
+    @NotBlank
+
+    // JSON-B: Nom et contrainte de l'attribut pour le format JSON.
+    @JsonbProperty(value = &quot;familyName&quot;, nillable = false)
+
+    // JPA: Nom et contrainte de la colonne en base de données.
+    @Column(name = &quot;family_name&quot;, nullable = false)
+    private String familyName;
+
+
+    // BeanValidation: Contrainte, format adresse de courriel et non vide.
+    @Email
+    @NotBlank
+
+    // JSON-B: Nom et contrainte de l'attribut pour le format JSON.
+    @JsonbProperty(value = &quot;email&quot;, nillable = false)
+
+    // JPA: Nom et contrainte de la colonne en base de données.
+    @Column(name = &quot;email&quot;, nullable = false, unique = true)
+    private String email;
+
+    public Customer() {
+    }
+
+    // Surchage des méthodes: 'equals', 'hashCode', 'toString'
+    // ...
+
+    // Accesseurs &amp; Mutateurs
+    // ...
+}
+
+</code></pre>
+<h3 id="convertisseur-dattribut">Convertisseur d'attribut</h3>
+<p>Le type <code>java.util.UUID</code> n'est pas généré nativement par <em>JPA</em>.
+Il est nécessaire de coder un convertisseur de type.
+Dans notre code, on convertira le type <code>java.util.UUID</code> en <code>java.lang.String</code>.</p>
+<pre><code class="language-java">package fr.zelmoacademy.dyna.common.persistence;
+
+import ...;
+
+// Applique le convertisseur automatiquent pour tous les attributs JPA de type 'java.util.UUID'.
+@Converter(autoApply = true)
+public class UUIDConverter implements AttributeConverter&lt;UUID, String&gt; {
+
+    public static final String COLUMN_DEFINITION = &quot;VARCHAR(36)&quot;;
+
+    public UUIDConverter() {
+    }
+
+    // Convertir un attribut en colonne de base de données.
+    @Override
+    public String convertToDatabaseColumn(UUID attribute) {
+        String column;
+        if (Objects.nonNull(attribute)) {
+            column = attribute.toString();
+        } else {
+            column = null;
+        }
+        return column;
+    }
+
+    // Convertir une colonne de base de données en attribut.
+    @Override
+    public UUID convertToEntityAttribute(String column) {
+        UUID attribute;
+        if (Objects.nonNull(column)) {
+            attribute = UUID.fromString(column);
+        } else {
+            attribute = null;
+        }
+        return attribute;
+    }
+}
+
+</code></pre>
+<h3 id="alignement-cdi">Alignement CDI</h3>
+<p>La technologie <strong>CDI</strong> <em>(</em><em>C</em><em>ontext </em><em>D</em><em>ependency </em><em>I</em><em>njection)</em> est une technologie qui prend de l'ampleur dans <em>Jakarta EE</em>.
+A ce titre nous pouvons unifier les injections de dépendance à travers CDI.</p>
+<pre><code class="language-java">package fr.zelmoacademy.dyna.common.persistence;
+
+import ...;
+
+// Cette classe est initialisée au démarrage de l'application.
+@ApplicationScoped
+public class PersistenceResource {
+
+    // Gestionnaire d'entité injectable avec CDI
+    @Produces
+    @PersistenceContext
+    private EntityManager em;
+
+    public PersistenceResource() {
+    }
+
+}
+
+</code></pre>
+<p>Grâce à cette classe vous pouvez utiliser l'annotation <code>@Inject</code> sur un attribut de type <code>javax.persistence.EntityManager</code>.</p>
+<h3 id="entrepot">Entrepôt</h3>
+<pre><code class="language-java">package fr.zelmoacademy.dyna.common.persistence;
+
+import ...;
+
+// Entrepôt de données générique &amp; polymorphique
+// Le pattern 'Repository/DAO' doit à l'usage avoir le même comportement qu'une 'Collection/List' en Java.
+// Comme cette classe s'adapte à la plupart des entités persistantes, les types manipulés seront donc
+// polymorphé avec 'Identifiable' afin d’assurer un minimum de typage. 
+// Cette classe est injectable avec CDI.
+@Dependent
+public class GenericDAO implements Serializable {
+
+    // Numéro de série pour respecter la sérialisation.
+    private static final long serialVersionUID = 1L;
+
+    // JPA: Gestionnaire d'entité 
+    @Inject
+    private transient EntityManager em;
+
+    public GenericDAO() {
+    }
+
+    // Récupérer le nombre d'occurrence en base de données pour une entité donnée.
+    public Long size(final Class&lt;? extends Identifiable&lt;?&gt;&gt; entityClass) {
+        // SQL:
+        // SELECT count(t.id) FROM table t;
+        var builder = em.getCriteriaBuilder();
+        var query = builder.createQuery(Long.class);
+        var root = query.from(entityClass);
+        query.select(builder.count(root));
+        return em.createQuery(query).getSingleResult();
+    }
+
+    // Indique si la table associée à une entité est vide.
+    public boolean isEmpty(final Class&lt;? extends Identifiable&lt;?&gt;&gt; entityClass) {
+        return size(entityClass) == 0L;
+    }
+
+    // Vérifier d'une entité existe déjà en base de données.
+    public boolean contains(final Identifiable&lt;?&gt; entity) {
+        var entityClass = entity.getClass();
+        boolean exists;
+
+        if (em.contains(entity)) {
+            // Vérification de l’existence de l'entité dans le contexte de persistance.
+            // (plus rapide qu'une requête)
+            exists = true;
+        } else {
+            // Sinon
+            // Requêter en base de données.
+            // SQL:
+            // SELECT count(t.id) FROM table t WHERE t.id = ?;
+            var builder = em.getCriteriaBuilder();
+            var query = builder.createQuery(Long.class);
+            var root = query.from(entityClass);
+            query.select(builder.count(root));
+            var idTypeName = getIdentifierTypeName(entity);
+            var predicate = builder.equal(root.get(idTypeName), entity.getId());
+            query.where(predicate);
+            exists = em.createQuery(query).getSingleResult() == 1L;
+        }
+        return exists;
+    }
+
+    // Sauvegarder une entité
+    // Si elle existe déjà, la mettre à jour en base de données
+    // Sinon l'insérer en base de données.
+    public Identifiable&lt;?&gt; add(final Identifiable&lt;?&gt; entity) {
+        Identifiable&lt;?&gt; mangedEntity;
+        if (contains(entity)) {
+            // Mettre à jour
+            mangedEntity = em.merge(entity);
+        } else {
+            // Insérer en base de données.
+            em.persist(entity);
+            mangedEntity = entity;
+        }
+        return mangedEntity;
+    }
+
+    // Supprimer une entité
+    // SQL:
+    // DELETE FROM table t WHERE t.id = ?;
+    public void remove(final Identifiable&lt;?&gt; entity) {
+        var entityClass = entity.getClass();
+        var id = getIdentifier(entity);
+        var attachedEntity = em.getReference(entityClass, id);
+        em.remove(attachedEntity);
+        CDI.current().destroy(attachedEntity);
+    }
+
+    // Rechercher toutes les entités d'un type donné:
+    // /!\ Peut remonter beaucoup d'objet et saturer la mémoire !
+    // SELECT t.col1, t.col2, t.col3, ... FROM table t;
+    public List&lt;? extends Identifiable&lt;?&gt;&gt; get(final Class&lt;? extends Identifiable&lt;?&gt;&gt; entityClass) {
+        var builder = em.getCriteriaBuilder();
+        var query = builder.createQuery(entityClass);
+        return em
+                .createQuery(query)
+                .getResultList();
+    }
+
+    // Rechercher une entité d'un type donné en fonction de son identifiant.
+    public Optional&lt;Identifiable&lt;?&gt;&gt; get(final Class&lt;? extends Identifiable&lt;?&gt;&gt; entityClass, final Object id) {
+        // Lecture dans le cache de persistance.
+        var entity = em.find(entityClass, id);
+        return Optional.ofNullable(entity);
+    }
+
+    // Méthode interne:
+    // Récupérer dynamiquement la valeur de la clef primaire.
+    private &lt;K&gt; K getIdentifier(final Identifiable&lt;K&gt; entity) {
+        return (K) em
+                .getEntityManagerFactory()
+                .getPersistenceUnitUtil()
+                .getIdentifier(entity);
+    }
+
+    // Méthode interne:
+    // Récupérer dynamiquement le nom de l'attribut de la clef primaire.
+    private String getIdentifierTypeName(final Identifiable&lt;?&gt; entity) {
+        var entityClass = entity.getClass();
+        var id = getIdentifier(entity);
+        var idClass = id.getClass();
+        return em
+                .getMetamodel()
+                .entity(entityClass)
+                .getId(idClass)
+                .getName();
+    }
+}
+
+</code></pre>
+<h2 id="couche-de-services">Couche de services</h2>
+<p>Le service métier ne possède pas de logique particulière.
+Son travail consiste principalement à de la délégation de méthode.</p>
+<pre><code class="language-java">package fr.zelmoacademy.dyna.common.service;
+
+import ...;
+
+// Classe de service générique pour les opérations de CRUD
+// Pas de logique particulière.
+// Simple appel de la DAO.
+
+// EJB: Indique que cette classe est sans état.
+@Stateless
+@LocalBean
+public class CommonService implements Serializable {
+
+    // Numéro de série.
+    private static final long serialVersionUID = 1L;
+
+    // CDI: Injection de l'entrepôt de donnée générique.
+    @Inject
+    private GenericDAO dao;
+
+    // Java Bean: Constructeur par défaut.
+    public CommonService() {
+    }
+
+    // JTA:Java Transaction API
+    // Gestionnaire de transaction
+    // Par défaut le EJB gèrent automatiquement les transactions
+    // Mais dans de rare cas, il peut être nécessaire de de définir ce comportement soit-même
+
+
+    // JTA: Indique que cette méthode requiert une nouvelle transaction.
+    // Exemple: @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+    public void save(final Identifiable&lt;?&gt; entity) {
+        // Si la clef primaire n'est pas définie, alors elle est générée
+        // Permet de distinguer la création d'une mise à jour
+        entity.checkId();
+
+        dao.add(entity);
+    }
+
+    // JTA: Indique que cette méthode requiert une transaction.
+    // Exemple: @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    public void remove(final Identifiable&lt;?&gt; entity) {
+        dao.remove(entity);
+    }
+
+    // JTA: Indique que cette méthode n'est pas besoin de transaction (lecture seule en base de données)
+    // Exemple: @TransactionAttribute(TransactionAttributeType.NEVER)
+    public Optional&lt;? extends Identifiable&lt;?&gt;&gt; findById(
+       final Class&lt;? extends Identifiable&lt;?&gt;&gt; entityClass, 
+       final Object id) {
+
+        return dao.get(entityClass, id);
+    }
+
+    // JTA: Indique que cette méthode n'est pas besoin de transaction (lecture seule en base de données)
+    // Exemple: @TransactionAttribute(TransactionAttributeType.NEVER)
+    public List&lt;? extends Identifiable&lt;?&gt;&gt; find(final Class&lt;? extends Identifiable&lt;?&gt;&gt; entityClass) {
+        return dao.get(entityClass);
+    }
+}
+</code></pre>
+<h3 id="variante-cdi">Variante CDI</h3>
+<p>Variante de cette classe mais avec la technologie <strong>CDI</strong>.</p>
+<pre><code class="language-java">package fr.zelmoacademy.dyna.common.service;
+
+import ...;
+
+// Classe de service générique pour les opérations de CRUD
+// Pas de logique particulière.
+// Simple appel de la DAO.
+
+// CDI: Instance charge au démarrage de l'application et dans un régime transactionnel
+@ApplicationScoped
+@Transactional
+public class CommonService {
+
+    // CDI: Injection de l'entrepôt de donnée générique.
+    @Inject
+    private GenericDAO dao;
+
+    // Java Bean: Constructeur par défaut.
+    public CommonService() {
+    }
+
+    // JTA:Java Transaction API
+    // Gestionnaire de transaction
+    // Par défaut le CDI NE gèrent PAS automatiquement les transactions
+    // Il est nécessaire d'ajouter l'annotation @Transactional pour avoir un comportement
+    // similaire aux EJB.
+
+    // Dans de rare cas, il peut être nécessaire de de définir ce comportement soit-même
+    // Pour cela, il suffit de porter l'annotation @Transactional sur les méthodes.
+
+    // Exiger une nouvelle transaction pour méthode.
+    // Même logique pour EJB, seule l'annotation diffère.
+    // Exemple: @Transactional(Transactional.TxType.REQUIRES_NEW)
+    public void save(final Identifiable&lt;?&gt; entity) { ... }
+
+
+    // Autres méthodes
+    // ...
+}
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>
+Effectivement, les EJB ne sont plus aussi indispensable qu'avant.
+Cette nouvelle écriture est valable depuis <strong>Java EE 7</strong>.
+Source: [[https://blogs.oracle.com/theaquarium/jta-12-its-not-your-grandfathers-transactions-anymore | Blog Oracle]]</p>
+</blockquote>
+<h2 id="couche-de-controle">Couche de contrôle</h2>
+<h3 id="entite-dynamique">Entité dynamique</h3>
+<p>Nous allons mettre en œuvre une énumération qui va porter en lui toute la spécificité de notre <em>CRUD</em>.
+Il arrive un stade où on ne peut plus être générique, afin de simplifier le code aux maximum, cette partie spécifique va se limiter à une seule classe.</p>
+<pre><code class="language-java">package fr.zelmoacademy.dyna;
+
+import ...;
+
+public enum DynamicEntity {
+
+    // Exemple
+    CUSTOMER(&quot;customer&quot;, Customer.class, UUID::fromString);
+
+    // Nom REST de l'entité cible pour le CRUD.
+    // Ce nom est celui qui apparait dans l'URL.
+    private final String name;
+
+    // Type Java de l'entité
+    private final Class&lt;? extends Identifiable&lt;?&gt;&gt; entityClass;
+
+    // Fonction générique de conversion de la clef primaire
+    // Depuis l'API, il arrive sous le type 'String'
+    // cette fonction permet de le convertir sous un autre type
+    // par exemple 'UUID' (voir exemple) 
+    private final Function&lt;String, Object&gt; identifierConverter;
+
+    DynamicEntity(
+            final String name,
+            final Class&lt;? extends Identifiable&lt;?&gt;&gt; entityClass,
+            final Function&lt;String, Object&gt; identifierConverter) {
+
+        this.name = name;
+        this.entityClass = entityClass;
+        this.identifierConverter = identifierConverter;
+    }
+
+    // A partir du nom de l'entité
+    // Rechercher la valeur de l'enumération correspondante.
+    public static Optional&lt;DynamicEntity&gt; fromName(final String name) {
+        return Stream
+                .of(DynamicEntity.values())
+                .filter(e -&gt; Objects.equals(e.name, name))
+                .findFirst();
+    }
+
+    // Convertir une clef primaire de type 'String'
+    // en autre autre type (polymorphé en 'Object')
+    public Object convertAsIdentifier(final String id) {
+        return identifierConverter.apply(id);
+    }
+
+    // Accesseurs
+
+    public String getName() {
+        return name;
+    }
+
+    public Class&lt;? extends Identifiable&lt;?&gt;&gt; getEntityClass() {
+        return entityClass;
+    }
+}
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>
+A présent, lorsque le développeur souhaite ajouter une entité dans le <em>CRUD</em>, il suffira d'ajouter une entrée dans cette énumération.
+Exemple: <code>CUSTOMER("customer", Customer.class, UUID::fromString)</code>.</p>
+</blockquote>
+<h3 id="convertisseur-dynamique">Convertisseur dynamique</h3>
+<p>Depuis notre <em>API</em> pour être générique, nous recevons les données sous forme de texte, sous <code>java.lang.String</code> en Java.
+Mais pour que l'application fonctionne correctement, nous avons besoin de convertir ces données dans les bons types.
+Bien entendu, les types réels seront polymorphé en type abstrait pour conserver la généricité.</p>
+<pre><code class="language-java">package fr.zelmoacademy.dyna.common.controller;
+
+import ...;
+
+public final class DynamicEntityMapper {
+
+    // Constructeur interne.
+    // Pas d'instanciation.
+    private DynamicEntityMapper() {
+        throw new UnsupportedOperationException(&quot;Instance not allowed&quot;);
+    }
+
+    // Convertir un 'String JSON' en entité (polymorphé en 'Identifiable')
+    // Si le type n'existe pas, une exception sera levée. 
+    public static Identifiable&lt;?&gt; mapToEntity(final String type, final String jsonEntity) {
+        return DynamicEntity
+                .fromName(type)
+                .map(DynamicEntity::getEntityClass)
+                .map(e -&gt; JsonbBuilder.create().fromJson(jsonEntity, e))
+                .orElseThrow(() -&gt; new WebApplicationException(&quot;Invalid entity&quot;));
+    }
+
+    // Convertir le nom du type en la classe Java de l'entité.
+     // Si le type n'existe pas, une exception sera levée. 
+    public static Class&lt;? extends Identifiable&lt;?&gt;&gt; mapToEntityClass(final String type) {
+        return DynamicEntity
+                .fromName(type)
+                .map(DynamicEntity::getEntityClass)
+                .orElseThrow(() -&gt; new WebApplicationException(&quot;Invalid entity&quot;));
+    }
+
+    // Convertir un 'String' de la clef primaire en un autre type
+    // en fonction du nom du type d'entité. 
+     // Si le type n'existe pas, une exception sera levée. 
+    public static Object mapToEntityId(final String type, final String id) {
+        return DynamicEntity
+                .fromName(type)
+                .map(e -&gt; e.convertAsIdentifier(id))
+                .orElseThrow(() -&gt; new WebApplicationException(&quot;Invalid entity&quot;));
+    }
+}
+
+</code></pre>
+<h3 id="controleur">Contrôleur</h3>
+<p>Pour utiliser les contrôleurs <em>REST</em> en Jakarta EE, une simple classe de configuration est nécessaire:</p>
+<pre><code class="language-java">package fr.zelmoacademy.dyna.common.controller;
+
+import ...;
+
+// JAXRS: Chemin racine de toute l'API.
+@ApplicationPath(&quot;api&quot;)
+public class RESTConfiguration extends Application {
+
+    public RESTConfiguration() {
+    }
+
+    // RAS
+    // Tout se configure avec les annotations.
+}
+
+</code></pre>
+<p>Enfin, voici le contrôleur unique pour toutes les opérations de <em>CRUD</em>.</p>
+<pre><code class="language-java">package fr.zelmoacademy.dyna.common.controller;
+
+import ...;
+
+// Cette classe est injectable
+// La durée de vie de l'instance est celui d'une requête HTTP.
+@RequestScoped
+
+// Chemin de base du contrôleur
+@Path(&quot;v1/entity&quot;)
+
+// Indique que le contrôleur produit et consomme du JSON.
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class CommonController {
+
+    // Injection du servie commun pour toutes les opérations de CRUD.
+    @Inject
+    private CommonService service;
+
+    public CommonController() {
+    }
+
+
+    // CREATE
+    // 1er paramètre: L'élément de l'URL dynamique en fonction du nom de l'entité cible.
+    // 2e paramètre: Corps de la requête, contient le JSON de l'entité à créer.
+    @POST
+    @Path(&quot;{type}/create&quot;)
+    public Response create(
+            @PathParam(&quot;type&quot;) final String type,
+            final String jsonEntity) {
+
+        var entity = DynamicEntityMapper.mapToEntity(type, jsonEntity);
+        service.save(entity);
+        return Response
+                .status(Response.Status.CREATED)
+                .build();
+    }
+
+    // UPDATE
+    // 1er paramètre: L'élément de l'URL dynamique en fonction du nom de l'entité cible.
+    // 2e paramètre: Corps de la requête, contient le JSON de l'entité à mettre à jour.
+    @PUT
+    @Path(&quot;{type}/update&quot;)
+    public Response update(
+            @PathParam(&quot;type&quot;) final String type,
+            final String jsonEntity) {
+
+        var entity = DynamicEntityMapper.mapToEntity(type, jsonEntity);
+        service.save(entity);
+        return Response
+                .status(Response.Status.NO_CONTENT)
+                .build();
+    }
+
+    // DELETE
+    // 1er paramètre: L'élément de l'URL dynamique en fonction du nom de l'entité cible.
+    // 2e paramètre: Corps de la requête, contient le JSON de l'entité à supprimer.
+    @DELETE
+    @Path(&quot;{type}/remove&quot;)
+    public Response remove(
+            @PathParam(&quot;type&quot;) final String type,
+            final String jsonEntity) {
+
+        var entity = DynamicEntityMapper.mapToEntity(type, jsonEntity);
+        service.remove(entity);
+        return Response
+                .status(Response.Status.NO_CONTENT)
+                .build();
+    }
+
+    // READ ALL
+    // 1er paramètre: L'élément de l'URL dynamique en fonction du nom de l'entité cible.
+    @GET
+    @Path(&quot;{type}/read&quot;)
+    public Response read(@PathParam(&quot;type&quot;) final String type) {
+
+        var entityClass = DynamicEntityMapper.mapToEntityClass(type);
+        var entities = service.find(entityClass);
+        return Response
+                .status(Response.Status.OK)
+                .entity(entities)
+                .build();
+    }
+
+    // READ
+    // 1er paramètre: L'élément de l'URL dynamique en fonction du nom de l'entité cible.
+    // 2e paramètre: Clef primaire de l'entité cible.
+    @GET
+    @Path(&quot;{type}/read/{id}&quot;)
+    public Response read(
+            @PathParam(&quot;type&quot;) final String type,
+            @PathParam(&quot;id&quot;) final String id) {
+
+        var entityClass = DynamicEntityMapper.mapToEntityClass(type);
+        var identifier = DynamicEntityMapper.mapToEntityId(type, id);
+        return service
+                .findById(entityClass, identifier)
+                .map(e -&gt; Response.ok(e).build())
+                .orElseGet(() -&gt; Response.status(Response.Status.NOT_FOUND).build());
+    }
+
+}
+</code></pre>
+<h3 id="gestion-des-exceptions">Gestion des exceptions</h3>
+<p>Pour terminer ce projet, voici une manière de gérer les exceptions avec <em>JAXRS</em>.</p>
+<pre><code class="language-java">package fr.zelmoacademy.dyna.common.controller;
+
+import ...;
+
+// JAXRS: Cette classe est appelée automatiquement lorsqu'une exception de type 'RuntimeException' survient.
+@Provider
+public class GenericExceptionMapper implements ExceptionMapper&lt;RuntimeException&gt; {
+
+    public GenericExceptionMapper() {
+    }
+
+    @Override
+    public Response toResponse(final RuntimeException exception) {
+
+        //TODO: Faire de la journalisation ici...
+
+        // Pour respecter le format d'échange JSON de l'API REST.
+        // en cas d'erreur on retourne un objet JSON.
+
+        var message = Json
+                .createObjectBuilder()
+                .add(&quot;error&quot;, exception.getClass().getCanonicalName())
+                .add(&quot;message&quot;, exception.getMessage())
+                .build();
+
+        return Response
+                .status(Response.Status.BAD_REQUEST)
+                .type(MediaType.APPLICATION_JSON)
+                .entity(message)
+                .build();
+    }
+}
+
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>
+Ceci n'est qu'un exemple générique.
+Dans la réalité, il conviendra de capturer les erreurs avec de type bien définit au lieu de <code>java.lang.RuntimeException</code>.</p>
+</blockquote>
+<h2 id="usage">Usage</h2>
+<p>Voici quelques commandes pour interroger l'application:</p>
+<p><strong>Création :</strong>
+<code bash>
+ curl -X POST \
+http://localhost:8080/dyna/api/v1/entity/customer/create \
+-H 'Content-Type: application/json' \
+-d '{"givenName": "John", "familyName": "DOE", "email": "john.doe @sample.org"}'</p>
+<pre><code>
+**Lecture :**
+&lt;code bash&gt;
+ curl -X GET \
+http://localhost:8080/dyna/api/v1/entity/customer/read\
+-H 'Content-Type: application/json' \
+
+&gt;&gt;&gt; 
+'[{
+  &quot;email&quot;: &quot;john.doe @sample.org&quot;, 
+  &quot;familyName&quot;: &quot;DOE&quot;, 
+  &quot;givenName&quot;: &quot;John&quot;, 
+  &quot;id&quot;: &quot;cc32378c-784c-49be-926a-930c1d37f6cd&quot;, 
+  &quot;version&quot;: &quot;0&quot;
+}]'
+</code></pre>
+<p><strong>Mise à jour :</strong>
+<code bash>
+ curl -X PUT \
+http://localhost:8080/dyna/api/v1/entity/customer/update\
+-H 'Content-Type: application/json' \
+-d '{
+  "givenName": "Johnny", 
+  "familyName": "TEST", 
+  "email": "johnny.test@sample.org",
+  "id": "cc32378c-784c-49be-926a-930c1d37f6cd", 
+  "version": "0"
+  }'</p>
+<pre><code>
+//Attention commande multi ligne.//
+
+**Suppression :**
+&lt;code bash&gt;
+ curl -X DELETE \
+http://localhost:8080/dyna/api/v1/entity/customer/remove/cc32378c-784c-49be-926a-930c1d37f6cd \
+-H 'Content-Type: application/json' \
+</code></pre>
+<p><strong>Exemple de message d'erreur (Json malformé) :</strong></p>
+<pre><code class="language-json">{
+  &quot;error&quot;:&quot;javax.json.stream.JsonParsingException&quot;,
+  &quot;message&quot;:&quot;Internal error: Unexpected char -1 at (line no=1, column no=240, offset=239)&quot;
+}
+</code></pre>
+<p><em>Pas terrible en effet...</em></p>
+<h2 id="axe-damelioration">Axe d'amélioration</h2>
+<ul>
+<li>Ajouter une meilleure gestion des exceptions, car dans l'exemple, le message laisse trahir le fonctionnement interne de l'application.</li>
+<li>Ajouter un mécanisme de sécurisation de l'API.</li>
+<li>Ajouter un mécanisme pour prendre en compte des règles métiers spécifiques.</li>
+<li>Ajouter un filtre dynamique pour avoir une granularité plus fine lors des requêtes vers l'API (jusqu'au niveau d'un attribut). =&gt; Principe de juste suffisance.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Voici un exemple minimaliste de <em>CRUD</em> en <em>Jakarta EE 8</em>.
+Pour ajouter de nouvelle entité à votre <em>CRUD</em> compléter simplement l'énumération <strong><em>DynamicEntity</em></strong>.</p>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../functional_programming/" class="btn btn-neutral" title="Programmation fonctionnelle"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/ZelmoTheDragon/ZelmoTheDragon.github.io" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../functional_programming/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

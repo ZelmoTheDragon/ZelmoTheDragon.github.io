@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="ZelmoTheDragon">
+  <link rel="canonical" href="https://zelmothedragon.github.io/java/functional_programming/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Programmation fonctionnelle - Zelmo Academy</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Programmation fonctionnelle";
+    var mkdocs_page_input_path = "java/functional_programming.md";
+    var mkdocs_page_url = "/java/functional_programming/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Zelmo Academy</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Accueil</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Java</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../">Sommaire</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../platform/">Plateforme</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../packaging/">Format binaire</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../organization/">Organisation du code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../java_bean/">Convention Java Bean</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../javadoc/">Documentation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../inheritance/">Héritage</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../polymorphism/">Polymorphisme</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../genericity/">Généricité</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../invoke_dynamic/">Invocation Dynamique</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Programmation fonctionnelle</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#interface-fonctionnelle">Interface fonctionnelle</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#expression-lambda">Expression lambda</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#concept">Concept</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#fonction-pure">Fonction pure</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#transparence-referentielle">Transparence référentielle</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#fonction-dordre-superieur">Fonction d'ordre supérieur</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#evaluation-paresseuse">Évaluation paresseuse</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#application-partielle">Application partielle</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#structure-de-donnees-immuables">Structure de données immuables</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cas-pratique-avance">Cas pratique avancé</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#objectif">Objectif</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#structure-de-donnees">Structure de données</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#classe-dexception">Classe d'exception</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#classe-du-validateur">Classe du Validateur</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#approche-par-predicat">Approche par prédicat</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#approche-par-reference-de-fonction">Approche par référence de fonction</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cas-dexception">Cas d'exception</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#axe-damelioration">Axe d'amélioration</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../project_crud/">Projet de synthèse</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Zelmo Academy</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Java &raquo;</li>
+        
+      
+    
+    <li>Programmation fonctionnelle</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="programmation-fonctionnelle">Programmation Fonctionnelle</h1>
+<h2 id="introduction">Introduction</h2>
+<p>La programmation fonctionnelle est un <strong>paradigme de programmation</strong> basé sur la notion de <strong>fonction</strong> et <strong>d'expression lambda</strong>.
+Elle est apparue en <strong>Java 1.8</strong>.</p>
+<p>Pour mettre en œuvre la programmation fonctionnelle en Java, nous utiliserons les concepts suivants :</p>
+<ul>
+<li>Les interfaces fonctionnelles</li>
+<li>Les méthodes par défauts des interfaces</li>
+<li>Les expressions lambda.</li>
+</ul>
+<h2 id="interface-fonctionnelle">Interface fonctionnelle</h2>
+<p>Une interface fonctionnelle est une interface qui ne possède qu'une seule méthode abstraite.
+Mais elle peut posséder plusieurs méthodes concrète par défaut.
+Elle porte également l'annotation <code>@FunctionalInterface</code>.</p>
+<p><strong>Exemple :</strong></p>
+<pre><code class="language-java">@FunctionalInterface
+public interface MyFunction&lt;T&gt;{
+
+   void apply(T element);
+}
+</code></pre>
+<p>De nombreuse interfaces fonctionnelles génériques sont déjà présentent dans Java pour couvrir les cas courants:</p>
+<table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>Type de retour</th>
+<th>Type en entrée</th>
+<th>Commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consumer<T></td>
+<td>void</td>
+<td>T</td>
+<td>Consomme une donnée</td>
+</tr>
+<tr>
+<td>Supplier<T></td>
+<td>T</td>
+<td>void</td>
+<td>Produit une donnée</td>
+</tr>
+<tr>
+<td>Predicate<T></td>
+<td>boolean</td>
+<td>T</td>
+<td>Pour construire une condition</td>
+</tr>
+<tr>
+<td>Function<T, R></td>
+<td>R</td>
+<td>T</td>
+<td>Fonction générique</td>
+</tr>
+<tr>
+<td>BiConsumer<T, U></td>
+<td>void</td>
+<td>T, U</td>
+<td>Variante du <code>Consumer</code> pour deux paramètres</td>
+</tr>
+<tr>
+<td>BiPredicate<T, U></td>
+<td>boolean</td>
+<td>T, U</td>
+<td>Variante du <code>Predicate</code> pour deux paramètres</td>
+</tr>
+<tr>
+<td>BiFunction<T, U, R></td>
+<td>R</td>
+<td>T, U</td>
+<td>Variante de <code>Function</code> pour deux paramètres</td>
+</tr>
+</tbody>
+</table>
+<p>Pour une liste plus exhaustive, voir le <strong>package</strong> <code>java.util.function</code>. </p>
+<h2 id="expression-lambda">Expression lambda</h2>
+<p>Vous pouvez voir l'écrire d'une expression lambda comme une façon plus simple d'utiliser des classes anonymes.
+Mais son fonctionnement en interne est radicalement différent.</p>
+<pre><code class="language-java">// Classe anonymes:
+// Cette écriture est ni élégante, ni épurée.
+// A EVITER !
+Function&lt;String, String&gt; upper = new Function&lt;&gt;() {
+
+  @Override
+  public String apply(String t){
+    return t.toUpperCase();
+  }
+};
+
+// Usage:
+var result = upper.apply(&quot;Hello world&quot;);
+// Sortie console:
+// HELLO WORLD
+</code></pre>
+<p>Dans le code ci-dessus, la seule information réellement utile le traitement de la fonction <code>apply</code>.
+On peut donc réduire l'écriture ainsi:</p>
+<pre><code class="language-java">// Expression lambda multi ligne.
+Function&lt;String, String&gt; upper0 = (String t) -&gt; {
+                                  ^^^^^^^^^^--------// 
+                                  // Paramètre de la fonction 'apply'.
+                                  // L'instanciation n'est plus nécessaire.
+                                  // Le nom de la fonction n'est plus nécessaire également.
+
+  return t.toUpperCase();   // Le traitement est sur une ligne, on peut simplifier l'écriture.
+};
+
+// Expression lambda en une ligne.
+Function&lt;String, String&gt; upper1 = t -&gt; t.toUpperCase();
+                                 ^^^-------------------//
+                                 // Paramètre de la fonction 'apply'.
+                                 // Le type de 't' est inféré, il est porté par le membre de gauche
+                                 // on peut donc omettre le typage.
+                                 // Les parenthèses sont optionnelles car il n'y a qu'un seul paramètre.
+                                 // Les accolades ne sont plus nécessaire car le traitement tient en une ligne.
+
+// Passage par référence
+Function&lt;String, String&gt; upper2 = String::toUpperCase;
+                                        ^^^^^^^^^^^^^----//
+                                        // La fonction 'toUpperCase' est transtyper en 'apply'.
+                                        // Le paramètre n'est plus nécessaire, il sera résolu
+                                        // à l'appel de la fonction.
+                                        // C'est le principe d'application partielle.
+</code></pre>
+<p>Lors de l'écriture d'une expression lambda privilégier le passage par référence de fonction ou l'écriture sur une ligne.
+Les écritures en blocs sont à éviter, cela signifie que vous pouvez extraire le bloc dans une autre fonction.</p>
+<blockquote>
+<p><strong>Note</strong>
+Toutes les fonctions d'une classe peuvent être passées par référence.
+Pour le constructeur la syntaxe est la suivante : <code>MyClass::new</code>.</p>
+</blockquote>
+<h2 id="concept">Concept</h2>
+<p>Voici les principes fondamentaux de la programmation fonctionnelle :</p>
+<ul>
+<li>Fonction pure</li>
+<li>Transparence référentielle</li>
+<li>Fonction d'ordre supérieur</li>
+<li>Évaluation paresseuse </li>
+<li>Application partielle</li>
+<li>Structure de données immuables</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>
+En Java nous ne ferons pas de distinction entre une <strong>méthode</strong> et une <strong>fonction</strong>.
+Ce sont des synonymes.</p>
+</blockquote>
+<h3 id="fonction-pure">Fonction pure</h3>
+<p>Une fonction pure, est une fonction qui ne produit pas d'effet de bord.
+Elle ne modifie pas son environnement.
+C'est-à-dire, pour des paramètres d'entrées données, la fonction produira toujours le même résultat sans influencer son environnement.</p>
+<p><strong>Exemple :</strong></p>
+<pre><code class="language-java">// Fonction pure
+public int getUniversalAnswer(){
+
+  return 42;
+  // Retourne toujours la valeur '42'.
+}
+
+// Fonction pure avec paramètres
+public int sum(final int a, final int b){
+
+  return a + b;
+  // Retourne toujours la même valeur
+  // pour des mêmes paramètres d'entrée.
+}
+
+// Fonction impure
+public int doSomething(int n){
+
+  var badDay = LocalDate.now().getDayOfWeek() == DayOfWeek.MONDAY;
+  if(badDay){
+    throw new IllegalStateException(&quot;RAGE QUIT!&quot;);
+  }
+  // Effet de bord:
+  // Cette fonction retourne un résultat différent
+  // en fonction du jour où elle est appelée.
+
+  return n * n;
+}
+
+// Fonction impure
+public void showUniversalAnswer(){
+
+  System.out.print(42);
+  // Effet de bord:
+  // Cette fonction modifie son environnement,
+  // en l'occurrence l'état de la console.
+  //
+  // Sortie console au premier appel: 42
+  // Sortie console au deuxième appel: 4242
+  // Sortie console au troisième appel: 424242
+  // ...
+}
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>
+L'effet de bord n'est pas quelque chose de fondamentalement mauvais, il faut simplement maîtriser son impact.
+Dans une application toutes les fonctions ne sont pas tenues d'être des fonctions pures.
+Si une application ne produit pas d'effet de bord, c'est qu'elle ne fait rien.</p>
+</blockquote>
+<h3 id="transparence-referentielle">Transparence référentielle</h3>
+<p>La transparence référentielle permet de considérer des fonctions pures comme des valeurs dans un algorithme.</p>
+<pre><code class="language-java">// Fonction pure
+public int getUniversalAnswer(){
+  return 42;
+}
+
+// Fonction pure
+public int sum(final int a, final int b){
+  return a + b;
+}
+
+// Fonction de traitement:
+public int doSomething(){
+                                 // Vision de la transparence référentielle:
+  var x = getUniversalAnswer();  // Peut être remplacé par: 42
+  var y = sum(x, x);             // Peut être remplacé par: 84
+  return x + y;                  
+}
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>
+On peut directement remplacer une fonction par le résultat de celle-ci sans que cela ne perturbe l'algorithme.</p>
+</blockquote>
+<h3 id="fonction-dordre-superieur">Fonction d'ordre supérieur</h3>
+<p>Une fonction d'ordre supérieur est une fonction qui prend en paramètre une fonction et/ou qui retourne une fonction.</p>
+<p><strong>Exemple :</strong></p>
+<pre><code class="language-java">// Fonction d'ordre supérieur
+// Le paramètre 'Supplier' est une interface fonctionnelle Java (donc une fonction)
+public void doSomething(final Supplier&lt;String&gt; message){
+  // ...
+}
+
+// Fonction d'ordre supérieur
+// Le type de retour 'Consumer' est une interface fonctionnelle Java (donc une fonction)
+public Consumer&lt;String&gt; doSomething(){
+  // ...
+}
+</code></pre>
+<h3 id="evaluation-paresseuse">Évaluation paresseuse</h3>
+<p>Ce concept va de pair avec les fonctions d'ordre supérieur, il permet d'obtenir le résultat d'une fonction le plus tard possible dans l'algorithme.</p>
+<p><strong>Exemple :</strong></p>
+<pre><code class="language-java">// Cas de la journalisation
+public void log(final Level level, Supplier&lt;String&gt; message){
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^-----//
+                                   // Fonction qui contient 
+                                   // une chaîne de caractères (potentiellement énorme).
+                                   // Cette fonction n'est pas encore évaluée,
+                                   // ce qui permet de ne pas consommer de la ressource inutilement
+                                   // notamment si le niveau de journalisation 
+                                   // ne permet pas d'enregistrement.
+
+
+  if(isLoggable(level)){
+     ^^^^^^^^^^---//
+     // Vérification du niveau de journalisation
+     // Est-ce que ce niveau permet l'enregistrement ?
+
+     // Création de l'enregistrement
+     // pour la journalisation.
+     var record = new LogRecord(level, message.get());
+                                               ^^^^^-----// Évaluation de la fonction:
+                                               // Cette fonction est invoquée à ce moment-là.
+                                               // La ressource est effectivement utilisée ici,
+                                               // car le besoin est avéré.
+
+     doLog(record);  // Faire l'enregistrement.
+  }
+
+  // Sinon:
+  // Ce niveau de journalisation ne permet pas d'enregistrement
+  // Pas besoin d'évaluer la fonction.
+  // Pas de consommation de la ressource.
+
+}
+</code></pre>
+<h3 id="application-partielle">Application partielle</h3>
+<p>Ce concept permet de manipuler des fonctions en résolvant implicitement ou tardivement des paramètres.</p>
+<p><strong>Exemple :</strong></p>
+<pre><code class="language-java">  // Cas nominal:
+  Stream
+      .of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;)
+      .forEach(e -&gt; System.out.println(e));
+                               ^^^^^^^^^^----// La fonction 'forEach' prend en paramètre
+                               // un 'Consumer' peut être résolu avec une expression lambda.
+                               // On passe 'e' l'élément d'itération de la fonction à 'println'.
+
+
+  // Application partielle:             
+  Stream
+      .of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;)
+      .forEach(System.out::println); 
+                           ^^^^^^^-----------// On passe cette fois directement la fonction 'println'
+                           // par référence.
+                           // On ne passe pas l'élément d'itération de la fonction à 'println'.
+                           // L'application partielle permet de résoudre le paramètre automatiquement.   
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>
+Le passage par référence de fonction en Java s'effectue avec la syntaxe <code>::</code>.
+La fonction <code>forEach</code> prend en paramètre un type <code>Consumer</code>, Java est en mesure de transtyper ce paramètre avec la fonction <code>println</code>.
+Pour se faire la signature de la fonction <code>Customer.accept</code> et <code>System.out.println</code> doivent correspondre.
+Ce qui bien entendu le cas ici.
+Le nom de la fonction n'entre pas en compte lors du transtypage fonctionnel, seuls les paramètres d'entrée et de sortie compte.</p>
+</blockquote>
+<h3 id="structure-de-donnees-immuables">Structure de données immuables</h3>
+<p>Comme une fonction pure ne doit pas produire d'effet de bord, il est donc logique que les objets passés en paramètres ne puissent pas être modifié par référence.
+Il faut à présent considérer les objets manipulés par ces fonctions comme des valeurs et non plus comme des références.
+Pour se faire les objets seront immuables.</p>
+<p><strong>Exemple :</strong></p>
+<pre><code class="language-java">// Classe de donnés immuables.
+// Impossible de changer l'état d'un objet après instanciation.
+public final class Cutomer {
+
+  // La classe 'java.lang.String' est immuable.
+  // Les attributs sont initialisés une et une seule fois lors de l'instanciation.
+  public final String givenName;
+  public final String familyName;
+  public final String email;
+
+  public Customer(final String givenName, final String familyName, final String email){
+    this.givenName = givenName;
+    this.familyName = familyName;
+    this.email = email;
+  }
+
+  // equals, hashCode et toString sur tous les attributs
+  // ...
+
+  // Accesseurs
+  // ...
+
+  // PAS DE MUTATEURS !
+
+  // Si on souhaite changer l'état de cet objet, il faut en instancier un nouveau à chaque fois
+  // Solution possible à la place des mutateurs:
+
+  public Customer withGivenName(final String givenName){
+    return new Customer(givenName, this.familyName, this.email);
+  }
+
+  public Customer withFamilyName(final String familyName){
+    return new Customer(this.givenName, familyName, this.email);
+  }
+
+  public Customer withEmail(final String email){
+    return new Customer(this.givenName, this.familyName, email);
+  }
+
+}
+</code></pre>
+<ul>
+<li>Un objet immuable ne produit pas d'effet de bord lorsqu'il est manipulé.</li>
+<li>Un objet immuable n'est pas soumis au problème d'accès concurrentiel <em>(thread-safe)</em>.</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>
+Effectivement, la <em>JVM</em> est obligée de faire une nouvelle allocation mémoire pour chaque instanciation.
+Généralement ce type d'objet immuable possède un cycle de vie assez court, ce qui n'est pas un problème.
+Le mécanisme de ramasse miette sait très bien gérer ce cas de figure.</p>
+</blockquote>
+<h2 id="cas-pratique-avance">Cas pratique avancé</h2>
+<h3 id="objectif">Objectif</h3>
+<p>On souhaite réaliser un validateur d'objet de données générique en pure Java avec l'approche fonctionnelle.</p>
+<h3 id="structure-de-donnees">Structure de données</h3>
+<pre><code class="language-java">// Exemple complet.
+// Classe de donnés immuable.
+public final class Cutomer {
+
+  public final String givenName;
+  public final String familyName;
+  public final String email;
+
+  public Customer(final String givenName, final String familyName, final String email){
+    this.givenName = givenName;
+    this.familyName = familyName;
+    this.email = email;
+  }
+
+  public int hashCode(){
+    return Objects.hash(givenName, familyName, email);
+  }
+
+  public boolean equals(Object obj){
+    boolean eq;
+    if (this == obj){
+      eq = true;
+    }else if(!(obj instanceof Customer)){
+      eq = false;
+    }else{
+      var other = (Customer) obj;
+      eq = Objects.equals(this.givenName, other.givenName)
+              &amp;&amp; Objects.equals(this.familyName, other.familyName)
+              &amp;&amp; Objects.equals(this.email, other.email);
+    }
+    return eq;
+  }
+
+  public String toString(){
+    return String.format(
+        &quot;%s{givenName=%s, familyName=%s, email=%s}&quot;, 
+        getClass().getName(),
+        this.givenName,
+        this.familyName,
+        this.email
+    );
+  }
+
+  public String getGivenName() {
+    return givenName;
+  }
+
+  public Customer withGivenName(final String givenName){
+    return new Customer(givenName, this.familyName, this.email);
+  }
+
+  public String getFamilyName() {
+    return familyName;
+  }
+
+  public Customer withFamilyName(final String familyName){
+    return new Customer(this.givenName, familyName, this.email);
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public Customer withEmail(final String email){
+    return new Customer(this.givenName, this.familyName, email);
+  }
+
+}
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>
+Pour ce cas pratique, n'importe quelle classe de données peut faire l'affaire.</p>
+</blockquote>
+<p>Si un objet n'est pas valide, la validation produira une exception.</p>
+<h3 id="classe-dexception">Classe d'exception</h3>
+<pre><code class="language-java">public class ValidationException extends RuntimeException {
+
+    private static final long serialVersionUID = 1L;
+
+    ValidationException(String message) {
+        super(message);
+    }
+
+}
+</code></pre>
+<h3 id="classe-du-validateur">Classe du Validateur</h3>
+<pre><code class="language-java">// On applique la généricité pour que cette classe travail avec n'importe quelle type d'instance.
+// Patron de conception: 'Monad'.
+public final class Validator&lt;T&gt; {
+
+  // Instance d'objet de données à valider.
+  private final T target;
+
+  // Liste de toutes les erreurs de validation.
+  private final List&lt;ValidationException&gt; exceptions;
+
+  // Constructeur privé
+  // Ce constructeur sera encapsulé dans une méthode fabrique.
+  private Validator(final T target) {
+        this.target = target;
+        this.exceptions = new ArrayList&lt;&gt;();
+ }
+
+  // Méthode de fabrique.
+  // Plus élégant pour chaîner les appels de méthodes.
+  public static &lt;T&gt; Validator&lt;T&gt; of(final T target) {
+        return new Validator&lt;&gt;(target);
+  }
+
+  // Méthode de validation
+  // 1er paramètre: Clause conditionnelle de validation.
+  // 2nd paramètre: Message d'erreur si la condition échoue.
+  public Validator&lt;T&gt; validate(final Predicate&lt;T&gt; predicate, final String message) {
+
+    // Exemple de prédicat:
+    // ???.getEmail() != null
+    // Le résultat de cette opération renvoie bien une valeur booléenne.
+    // Où ??? doit être un objet de type T. (confère généricité)
+
+    // Évaluation paresseuse du prédicat.
+    // Si le test échoue,
+    // on crée une exception et on l'ajoute à la liste.
+    // On ne lève pas l'exception maintenant
+    // car on souhaite tester l'intégralité de l'objet avant la levée d'exception.
+    if (!predicate.test(target)) {
+            exceptions.add(new ValidationException(message));
+    }
+
+    // Pour chaîner les appels, on retourne l'instance du validateur courant.
+    return this;
+  }
+
+  // Méthode de validation
+  // C'est fois-ci, on utilise le concept d'application partielle.
+  // 1er paramètre: Fonction générique permettant d'accéder à une propriété de l'objet.
+  // 2e paramètre: Clause conditionnelle de validation.
+  // 3e paramètre: Message d'erreur si la condition échoue.
+  public &lt;R&gt; Validator&lt;T&gt; validate(
+            final Function&lt;T, R&gt; projection,
+            final Predicate&lt;R&gt; predicate,
+            final String message) {
+
+    // Exemple de projection:
+    // ???.getEmail()
+    // On récupère ici simple une fonction de l'objet à valider.
+    // Où ??? doit être un objet de type T. (confère généricité)
+
+    // Exemple de prédicat:
+    // ??? != null
+    // Un simple condition, ici doit être différent de nul.
+    // Où ??? doit être un objet de type R. (confère généricité)
+
+    // Ci-dessous, avec l'application partielle, on réalise également de la composition de fonction
+    // Ce qui permet d'associer la projection et le prédicat:
+    // ???.getEmail() != null
+    // Or ce résultat est lui-même un prédicat
+    // On peut donc rappeler la fonction 'validate' ci-dessus.
+
+    return validate(projection.andThen(predicate::test)::apply, message);
+  }
+
+  // Enfin, on peut dés-encapsuler l'objet initial et lever les exceptions si existantes.
+  public T get() {
+
+    // Si l'objet possède des exceptions...
+    if (!exceptions.isEmpty()) {
+
+      // On crée une exception racine
+      ValidationException exception = new ValidationException(&quot;Validation failed&quot;);
+
+      // Puis on concatène les autres exceptions à la racine
+      // Cela permet d'avoir les messages de tous les champs invalides
+      // dans une seule trace.
+      exceptions.forEach(exception::addSuppressed);
+      throw exception;
+    }
+
+    // On retourne l'objet initial.
+    return target;
+  }
+}
+</code></pre>
+<h3 id="approche-par-predicat">Approche par prédicat</h3>
+<p><strong>Mise en œuvre :</strong></p>
+<pre><code class="language-java">
+  // Expression régulière simple pour adresse de courriel.
+  String emailRegEx = &quot;^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$&quot;;
+  Pattern pattern = Pattern.compile(emailRegEx, Pattern.CASE_INSENSITIVE);
+
+  Customer enity = new Customer(&quot;John&quot;, &quot;DOE&quot;, &quot;john.doe@sample.org&quot;);
+
+  // Approche par prédicat:
+  Validator
+    .of(entity)
+    .validate(e -&gt; Objects.nonNull(e.getGivenName()), &quot;Le prénom est obligatoire&quot;)
+    .validate(e -&gt; Objects.nonNull(e.getFamilyName()), &quot;Le nom de famille est obligatoire&quot;)
+    .validate(e -&gt; Objects.nonNull(e.getEmail()), &quot;L'adresse de courriel est obligatoire&quot;)
+    .validate(e -&gt; pattern.matcher(e.getEmail()).matches(), &quot;Format d'adresse de courriel invalide&quot;)
+    .get();
+
+</code></pre>
+<h3 id="approche-par-reference-de-fonction">Approche par référence de fonction</h3>
+<p><strong>Mise en œuvre :</strong></p>
+<pre><code class="language-java">
+  Customer enity = new Customer(&quot;John&quot;, &quot;DOE&quot;, &quot;john.doe@sample.org&quot;);
+
+  // Approche par référence de fonction:
+  Validator
+    .of(entity)
+    .validate(Customer::getGivenName, Objects::nonNull, &quot;Le prénom est obligatoire&quot;)
+    .validate(Customer::getFamilyName, Objects::nonNull, &quot;Le nom de famille est obligatoire&quot;)
+    .validate(Customer::getEmail, Objects::nonNull, &quot;L'adresse de courriel est obligatoire&quot;)
+    .validate(Customer::getEmail, this::checkEmail, &quot;Format d'adresse de courriel invalide&quot;)
+    .get();  
+
+
+  // Cette petite méthode est pour faciliter l’écriture.
+  private boolean checkEmail(String email){
+    boolean check;
+    if(Objects.isNull(email)){
+      checked = false;
+    }else{
+      String emailRegEx = &quot;^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$&quot;;
+      Pattern pattern = Pattern.compile(emailRegEx, Pattern.CASE_INSENSITIVE);
+      checked = pattern.matcher(email).matches();
+    }
+    return checked;
+  }
+</code></pre>
+<h3 id="cas-dexception">Cas d'exception</h3>
+<p><strong>Mise en œuvre :</strong></p>
+<pre><code class="language-java">  // Cas d'un objet invalide:
+  Customer fake = new Customer(null, null, &quot;john.doe&quot;);
+
+  Validator
+    .of(fake)
+    .validate(Customer::getGivenName, Objects::nonNull, &quot;Le prénom est obligatoire&quot;)
+    .validate(Customer::getFamilyName, Objects::nonNull, &quot;Le nom de famille est obligatoire&quot;)
+    .validate(Customer::getEmail, Objects::nonNull, &quot;L'adresse de courriel est obligatoire&quot;)
+    .validate(Customer::getEmail, this::checkEmail, &quot;Format d'adresse de courriel invalide&quot;)
+    .get();  
+
+// Sortie console:
+//&gt; Statck Trace
+//
+// Exception in thread &quot;main&quot; fr.zelmoacademy.util.validation.ValidationException: Validation failed
+// at fr.zelmoacademy.util.validation.Validator.get(Validator.java:XX)
+// at fr.zelmoacademy.Launcher.main(Launcher.java:XX)
+// Suppressed: fr.zelmoacademy.validation.ValidationException: Le prénom est obligatoire
+//   at fr.zelmoacademy.util.validation.Validator.validate(Validator.java:XX)
+//   at fr.zelmoacademy.Launcher.main(Launcher.java:XX)
+// Suppressed: fr.zelmoacademy.validation.ValidationException: Le nom de famille est obligatoire
+//   at fr.zelmoacademy.util.validation.Validator.validate(Validator.java:XX)
+//   at fr.zelmoacademy.Launcher.main(Launcher.java:XX)
+// Suppressed: fr.zelmoacademy.validation.ValidationException: Format d'adresse de courriel invalide
+//   at fr.zelmoacademy.util.validation.Validator.validate(Validator.java:XX)
+//   at fr.zelmoacademy.Launcher.main(Launcher.java:XX)
+</code></pre>
+<h3 id="axe-damelioration">Axe d'amélioration</h3>
+<p>On peut créer une classe utilitaire avec plein de méthode statique pour les prédicats tel que <code>checkEmail</code>.
+Ceci permettrait de créer du code réutilisable facilement.</p>
+<p>Si vous examinez attentivement la classe <code>Validator&lt;T&gt;</code> vous constaterez que les fonctions ne sont pas pures.
+a votre avis comment corriger cela ?</p>
+<blockquote>
+<p><strong>Note</strong>
+Malgré le passage par référence et l'application partielle, le compilateur est en mesure de résoudre le typage statique de Java par inférence.
+Pas de problème de ce côté-là.</p>
+</blockquote>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../project_crud/" class="btn btn-neutral float-right" title="Projet de synthèse">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../invoke_dynamic/" class="btn btn-neutral" title="Invocation Dynamique"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/ZelmoTheDragon/ZelmoTheDragon.github.io" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../invoke_dynamic/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../project_crud/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

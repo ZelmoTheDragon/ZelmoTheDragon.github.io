@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="ZelmoTheDragon">
+  <link rel="canonical" href="https://zelmothedragon.github.io/java/packaging/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Format binaire - Zelmo Academy</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Format binaire";
+    var mkdocs_page_input_path = "java/packaging.md";
+    var mkdocs_page_url = "/java/packaging/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Zelmo Academy</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Accueil</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Java</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../">Sommaire</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../platform/">Plateforme</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Format binaire</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#format-jar">Format JAR</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#variante-executable">Variante exécutable</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#variante-ejb">Variante EJB</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#format-war">Format WAR</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#format-ear">Format EAR</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#philosophie-de-construction">Philosophie de construction</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../organization/">Organisation du code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../java_bean/">Convention Java Bean</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../javadoc/">Documentation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../inheritance/">Héritage</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../polymorphism/">Polymorphisme</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../genericity/">Généricité</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../invoke_dynamic/">Invocation Dynamique</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../functional_programming/">Programmation fonctionnelle</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../project_crud/">Projet de synthèse</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Zelmo Academy</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Java &raquo;</li>
+        
+      
+    
+    <li>Format binaire</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="format-binaire-java">Format binaire Java</h1>
+<h2 id="format-jar">Format JAR</h2>
+<p>Le format <strong><em>JAR</em></strong> (<strong><em>J</em>*ava </strong>AR<em><em>chive</em>) pour les fichiers à l'extension <code>*.jar</code> est le format le plus rependu dans le monde Java.
+Il s'agit simplement d'une archive type </em>ZIP* contenant le code Java compilé (fichier à l'extension <code>.class</code>).</p>
+<p>Par défaut, il est utilisé pour former des bibliothèques logicielles pour d'autres applications.</p>
+<h3 id="variante-executable">Variante exécutable</h3>
+<p>Suivant les métadonnées renseignées lors de la compilation un fichier <em>JAR</em> peut se comporter comme un programme exécutable. Voici comment l'exécuter en ligne de commande:</p>
+<pre><code>java -jar my-app.jar
+</code></pre>
+<h3 id="variante-ejb">Variante EJB</h3>
+<p>Pour les projets utilisant les technologies <em>Jakarta EE</em>, notamment la technologie <em>EJB: Enterprise Java Bean</em>,
+le format <em>JAR</em> est également utilisé, mais les métadonnées sont différentes.</p>
+<p>{{:dev:java:java_ejb_structure.gif| Structure EJB}}</p>
+<p><sub>Source: Oracle</sub></p>
+<p>Par exemple, on peut encore identifier la présence du fichier <strong>ejb-jar.xml</strong> dans le code compilé.</p>
+<h2 id="format-war">Format WAR</h2>
+<p>Le format <strong><em>WAR</em></strong> pour <strong><em>W</em>*eb application </strong>AR<em><em>chive</em> ou fichier portant l'extension <code>*.war</code>, est utilisé généralement pour la conception d'application web en Java.
+Pour fonctionner, ce type de fichier doit être déployé sur un serveur d'applications Java tel que </em>Wildfly<em>, </em>Glassfish<em>, </em>Payara<em>, </em>WebLogic<em> ou encore </em>Tomcat*.</p>
+<p>{{:dev:java:java_war_structure.gif| Structure WAR}}</p>
+<p><sub>Source: Oracle</sub></p>
+<p>Dans ce type d'archive, on retrouve:
+  * Les métadonnées (fichiers <em>XML</em>)
+  * Le code Java compilé.
+  * Les ressources web: <em>JSP</em>, <em>JSPX</em>, <em>XHTML</em>, <em>HTML</em>, <em>CSS</em>, <em>JavaScript</em>.
+  * Les ressources statiques : images, polices d'écriture...
+  * Les autres dépendances logicielles sous forme de <em>JAR</em> dans un sous-dossier <code>lib</code>.</p>
+<h2 id="format-ear">Format EAR</h2>
+<p>Il signifie <strong><em>E</em>*nterprise </strong>AR<em><em>chive</em> pour les fichiers à l'extension <code>*.ear</code>.
+Ce format est exclusif aux applications </em>Jarkarta EE<em> et il ne peut uniquement être déployé sur des serveur d'applications supportant pleinement la plateforme </em>Jakarta EE*.</p>
+<p>{{:dev:java:java_ear_structure.gif|Structure EAR}}</p>
+<p><sub>Source: Oracle</sub></p>
+<p>Cette archive est en réalité un regroupement :</p>
+<ul>
+<li>De métadonnées (fichier <em>XML</em>)</li>
+<li>De modules <em>EJB</em></li>
+<li>De modules <em>WAR</em></li>
+<li>De modules <em>RAR</em></li>
+<li>De modules client <em>JAR</em></li>
+<li>Des autres dépendances logicielles sous forme de <em>JAR</em>.</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>
+Les archives <em>RAR (</em><em>R</em><em>esource Adapter </em><em>AR</em><em>chive)</em> à l'extension <code>*.rar</code> sont d'anciennes archives de l'écosystème <em>Java EE</em> contenant des fichiers spécifiques à un environnement ou à une architecture.
+Ce type de module est en désuétude, de même que les modules clients <em>JAR</em>.</p>
+</blockquote>
+<h3 id="philosophie-de-construction">Philosophie de construction</h3>
+<p>Dans un projet de type <em>EAR</em> chaque module à des fonctions bien définies.</p>
+<p>Les modules <em>EJB</em> représente la partie de traitement côté serveur où le traitement métier est effectué ainsi que la sauvegarde en base de données. En général pour de grande application, on crée un module <em>EJB</em> par zone fonctionnelle.</p>
+<p>Les modules <em>WAR</em> représente la partie client léger de l'application, il peut s'agit d'une application servant des pages web ou d'une application de type <em>SOAP</em> ou <em>REST</em>. On crée un module <em>WAR</em> par zone fonctionnelle et/ou par catégorie d'interface (interface web, REST, SOAP...).</p>
+<p><strong>Exemple :</strong> Dans un site marchand, on peut imaginer la gestion de stock et la préparation d'une commande comme deux zones fonctionnelles distinctes. Ainsi, nous avons deux modules <em>EJB</em> pour le traitement métier et au moins deux modules <em>WAR</em> pour la partie cliente. (Je précise au moins, car on pourrait imaginer pour un module <em>EJB</em> avoir une partie accessible à travers des pages web et une autres à travers une <em>API REST</em>, soit deux modules <em>WAR</em>).</p>
+<p>Cela permet un découpage logiciel plus propre. À l'avenir, il est d'autant plus simple de découper l'applicatif si l'on considère le découpage <strong>microservice</strong>.</p>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../organization/" class="btn btn-neutral float-right" title="Organisation du code">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../platform/" class="btn btn-neutral" title="Plateforme"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/ZelmoTheDragon/ZelmoTheDragon.github.io" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../platform/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../organization/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

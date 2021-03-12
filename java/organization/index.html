@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="ZelmoTheDragon">
+  <link rel="canonical" href="https://zelmothedragon.github.io/java/organization/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Organisation du code - Zelmo Academy</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Organisation du code";
+    var mkdocs_page_input_path = "java/organization.md";
+    var mkdocs_page_url = "/java/organization/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Zelmo Academy</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Accueil</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Java</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../">Sommaire</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../platform/">Plateforme</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../packaging/">Format binaire</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Organisation du code</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#notion-de-racine">Notion de racine</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#notion-de-cohesion">Notion de cohésion</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#organisation-par-couche">Organisation par couche</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#organisation-par-fonctionnalites">Organisation par fonctionnalités</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#organisation-par-technologie">Organisation par technologie</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../java_bean/">Convention Java Bean</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../javadoc/">Documentation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../inheritance/">Héritage</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../polymorphism/">Polymorphisme</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../genericity/">Généricité</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../invoke_dynamic/">Invocation Dynamique</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../functional_programming/">Programmation fonctionnelle</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../project_crud/">Projet de synthèse</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Zelmo Academy</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Java &raquo;</li>
+        
+      
+    
+    <li>Organisation du code</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="organisation-des-classes-java">Organisation des classes Java</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Dans un projet Java, les classes sont regroupées dans des répertoires appelés <strong><em>packages</em></strong>.
+Ces <em>packages</em> permettent d'organiser votre code et de former l'architecture logicielle de votre application. Un développeur doit comprendre à la simple vue des <em>packages</em> l'intention de l’architecture logicielle.</p>
+<h3 id="notion-de-racine">Notion de racine</h3>
+<p>Tout projet Java se doit d'organiser ses <em>packages</em> sous forme d'arborescence logique.
+Pour ce faire on détermine une racine. Le ou les <em>packages</em> racines ont pour but de données une réelle identité à vos classes, c'est de là que part toute l'architecture.</p>
+<p>On applique pour cela la convention de nommage dit du <strong><em>reserve DNS</em></strong> (ou nom de domaine inversé).</p>
+<p>Exemple :</p>
+<ul>
+<li>Pour Google, le <em>package</em> racine est le suivant : <code>com.google</code>.</li>
+<li>Pour la Fondation Apache : <code>org.apache</code>.</li>
+<li>Pour la Fondation Eclipse : <code>org.eclipse</code>.</li>
+<li>etc...</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>
+Vous l'avez compris le <em>package</em> racine se construit sur ce motif :
+<code>&lt;Nom de domaine inversé&gt;.&lt;Nom du projet&gt;</code>.</p>
+</blockquote>
+<h3 id="notion-de-cohesion">Notion de cohésion</h3>
+<p><strong>Définition :</strong></p>
+<ul>
+<li>Une classe est en dépendance avec une autre classe si :<ul>
+<li>Cette dernière est déclarée dans ses imports.</li>
+</ul>
+</li>
+<li>Une classe est en cohésion avec une autre classe si :<ul>
+<li>Elle est en relation avec cette autre classe.</li>
+<li>Elle n'est pas déclarée dans ses imports.</li>
+</ul>
+</li>
+<li>Une classe <strong>n'est pas</strong> en cohésion avec d'autres classes si :<ul>
+<li>Elle n'est pas en relation avec les classes de son <em>package</em>.  </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>
+En Java les classes d'un même <em>package</em> n'ont pas besoin de s'importer mutuellement.</p>
+</blockquote>
+<p><strong>Pour vérifier la cohésion d'une classe il suffit de regarder ses imports.</strong>
+<strong>Plus une classe possède d'import de classe du même projet, plus sa cohésion est faible.</strong>
+<strong>Une classe possédant trop d'import indique également que la classe à trop de responsabilité, et donc qu'elle pourrait être découpée en de plus petites classes.</strong></p>
+<h2 id="organisation-par-couche">Organisation par couche</h2>
+<p>L'organisation par couche est la plus rependue auprès des développeurs, elle est également simple à mettre en place. En revanche les classes manques de cohésion entre elles.</p>
+<p>Dans un projet <em>Jakarta EE</em> voici un exemple d'organisation :</p>
+<p>Partie <em>EJB</em> :</p>
+<pre><code> + fr.zelmoacademy.example
+   + model
+     - data
+     - entity
+     - mapper
+     - repository
+   - service
+   - security
+   - util 
+</code></pre>
+<p>Partie <em>WAR</em> :</p>
+<pre><code> + fr.zelmoacademy.example.client
+   - controller
+   + model
+     - data
+     - form
+     - mapper
+   - security 
+   - view
+   - util 
+</code></pre>
+<p><strong>Légende :</strong></p>
+<ul>
+<li><strong>model</strong> : Regroupe les classes représentants les données ainsi que les classes qui les transforment.</li>
+<li><strong>data</strong> : Regroupe les classes de type <em>DTO (Data Transfer Object)</em>.</li>
+<li><strong>entity</strong> : Regroupe les classes de type entité métier.</li>
+<li><strong>mapper</strong> : Regroupe les classes qui transforment les <em>DTO</em> en d'autres types de <em>DTO</em> ou d'entité et réciproquement.</li>
+<li><strong>repository</strong> : Regroupe les classes de type <em>DAO (Data Access Object)</em>.</li>
+<li><strong>service</strong> : Regroupe les classes de traitement (comme les cas d'utilisation).</li>
+<li><strong>util</strong> : Regroupe les classes utilitaires.</li>
+<li><strong>controller</strong> : Regroupe les classes de type <em>Contrôleur</em> qui permettent d'interroger l'application depuis l’extérieur.</li>
+<li><strong>form</strong> : Regroupe les classes de type <em>Formulaire</em>, ce sont des <em>DTO</em> mais pour des pages de formulaire web.</li>
+<li><strong>security</strong> : Regroupe les classes dédiées à la mise en œuvre de la sécurité.</li>
+<li><strong>view</strong> : Regroupe les classes dédiées spécifiquement à la vue.</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>
+Bien entendu, vous pouvez décliner cette organisation en fonction du projet. Ou encore privilégier d'autre nom pour vos <em>packages</em> (exemple: <em>dao</em> au lieu de <em>repository</em>, <em>dto</em> au lieu de <em>data</em> ...).</p>
+</blockquote>
+<h2 id="organisation-par-fonctionnalites">Organisation par fonctionnalités</h2>
+<p>L'organisation par fonctionnalité permet d'augmenter la cohésion entre les classes en les regroupant par traitement.
+Chaque fonctionnalités doit être indépendantes des autres, ce qui limite grandement les effets de bord.
+Mais elle nécessite un découpe métier beaucoup plus rigoureux.</p>
+<p>Partie <em>EJB</em> :</p>
+<pre><code> + fr.zelmoacademy.example
+   - common
+   - feature1
+   - feature2
+   - feature3
+   - security
+   - util 
+</code></pre>
+<p>Partie <em>WAR</em>:</p>
+<pre><code> + fr.zelmoacademy.example.client
+   - common
+   - feature1
+   - feature2
+   - feature3
+   - security
+   - util 
+</code></pre>
+<p><strong>Légende :</strong></p>
+<ul>
+<li><strong>feature</strong> : A renommer par le nom de la fonctionnalité réelle. <em>Ce package</em> est spécifique, il ne dépend que de <em>common</em> et <em>util</em>.</li>
+<li><strong>common</strong> : Regroupe les classes communes entre les fonctionnalités.</li>
+</ul>
+<p>A présent, dans la partie <em>EJB</em> chaque <em>package</em> de fonctionnalité regroupe : les entités métiers, les <em>DTO</em>, les <em>DAO</em>, le ou les services ...
+La partie <em>WAR</em> reprend ce principe également mais pour les <em>contrôleurs</em>, <em>formulaires</em>, <em>DTO</em>...</p>
+<h2 id="organisation-par-technologie">Organisation par technologie</h2>
+<p>Cette organisation est un découpage avancé par technologie.
+Il isole le métier codé en pure Java afin de pouvoir décider de la technologie à utiliser le plus tardivement possible.
+Ou de pouvoir changer de technologie en réduisant le coût technique.</p>
+<blockquote>
+<p><strong>Note</strong>
+Cette organisation relève d'une architecture nommée : <strong><em>Clean Architecture</em></strong> ou <strong>Architecture Hexagonale</strong>.
+Elle est plus complexe à mettre en œuvre et nécessite plus de code.
+A privilégier uniquement pour des gros projets avec des règles métiers et des enjeux techniques.</p>
+</blockquote>
+<p>Partie <em>JAR</em> en pure Java, pas de dépendances externes:</p>
+<pre><code> + fr.zelmoacademy.example.core
+   + model
+     - data
+     - gateway
+   - business
+   - util
+</code></pre>
+<p>OU</p>
+<pre><code> + fr.zelmoacademy.example.core
+   - common
+   - feature1
+   - feature2
+   - feature3
+   - util
+</code></pre>
+<p>Partie <em>EJB</em>:</p>
+<pre><code> + fr.zelmoacademy.example
+   + persistence
+     - entity
+     - mapper
+     - repository 
+   - service
+   - security
+   - util
+</code></pre>
+<p>Partie <em>WAR</em>:</p>
+<pre><code> + fr.zelmoacademy.example.client
+   + controller
+   + model
+     - data
+     - form
+     - mapper
+   - security 
+   - view
+   - util
+</code></pre>
+<p><strong>Légende :</strong></p>
+<ul>
+<li><strong>core</strong> : Ce <em>package</em> contient tout le cœur métier de l'application en pure Java, sans dépendances externes.</li>
+<li><strong>gateway</strong> : Pour passerelle, c'est un terme très générique pour englober la notion d'entrepôt (<em>repository</em>), de service web, d'annuaire ou tout ce qui consiste à la lecture/écrire d'objet en dehors de l'application.</li>
+<li><strong>business</strong> : Contient les classes réalisant les traitements métiers (cas d'utilisation).</li>
+<li><strong>persistence</strong> : Ce <em>package</em> est dédié à l'emploi de la technologie de persistance, en <em>Jakarta EE</em> il s'agit de <strong><em>JPA</em></strong>. Le package <em>mapper</em> permet la conversion entre les entités persistantes et les objets du cœur métier.</li>
+<li><strong>service</strong> :  Ce <em>package</em> est dédié à l'emploi de la technologie de traitement, en <em>Jakarta EE</em> il s'agit d'<strong><em>EJB</em></strong>.</li>
+</ul>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../java_bean/" class="btn btn-neutral float-right" title="Convention Java Bean">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../packaging/" class="btn btn-neutral" title="Format binaire"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/ZelmoTheDragon/ZelmoTheDragon.github.io" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../packaging/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../java_bean/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

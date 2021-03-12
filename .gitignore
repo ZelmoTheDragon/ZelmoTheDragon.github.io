@@ -1,0 +1,6 @@
+# gitignore
+
+**/.idea
+**/zelmo_academy
+**/venv
+ 
