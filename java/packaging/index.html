@@ -134,8 +134,8 @@
               
                 <h1 id="format-binaire-java">Format binaire Java</h1>
 <h2 id="format-jar">Format JAR</h2>
-<p>Le format <strong><em>JAR</em></strong> (<strong><em>J</em>*ava </strong>AR<em><em>chive</em>) pour les fichiers à l'extension <code>*.jar</code> est le format le plus rependu dans le monde Java.
-Il s'agit simplement d'une archive type </em>ZIP* contenant le code Java compilé (fichier à l'extension <code>.class</code>).</p>
+<p>Le format <strong><em>JAR</em></strong> (<strong><em>J</em></strong>ava <strong><em>AR</em></strong>chive) pour les fichiers à l'extension <code>*.jar</code> est le format le plus rependu dans le monde Java.
+Il s'agit simplement d'une archive type <em>ZIP</em> contenant le code Java compilé (fichier à l'extension <code>.class</code>).</p>
 <p>Par défaut, il est utilisé pour former des bibliothèques logicielles pour d'autres applications.</p>
 <h3 id="variante-executable">Variante exécutable</h3>
 <p>Suivant les métadonnées renseignées lors de la compilation un fichier <em>JAR</em> peut se comporter comme un programme exécutable. Voici comment l'exécuter en ligne de commande:</p>
@@ -148,8 +148,8 @@ le format <em>JAR</em> est également utilisé, mais les métadonnées sont diff
 <p><sub>Source: Oracle</sub></p>
 <p>Par exemple, on peut encore identifier la présence du fichier <strong>ejb-jar.xml</strong> dans le code compilé.</p>
 <h2 id="format-war">Format WAR</h2>
-<p>Le format <strong><em>WAR</em></strong> pour <strong><em>W</em>*eb application </strong>AR<em><em>chive</em> ou fichier portant l'extension <code>*.war</code>, est utilisé généralement pour la conception d'application web en Java.
-Pour fonctionner, ce type de fichier doit être déployé sur un serveur d'applications Java tel que </em>Wildfly<em>, </em>Glassfish<em>, </em>Payara<em>, </em>WebLogic<em> ou encore </em>Tomcat*.</p>
+<p>Le format <strong><em>WAR</em></strong> pour <strong><em>W</em></strong>eb application <strong><em>AR</em></strong>chive ou fichier portant l'extension <code>*.war</code>, est utilisé généralement pour la conception d'application web en Java.
+Pour fonctionner, ce type de fichier doit être déployé sur un serveur d'applications Java tel que <em>Wildfly</em>, <em>Glassfish</em>, <em>Payara</em>, <em>WebLogic</em> ou encore <em>Tomcat</em>.</p>
 <p><img alt="Structure WAR" src="https://docs.oracle.com/javaee/5/tutorial/doc/figures/web-module.gif" /></p>
 <p><sub>Source: Oracle</sub></p>
 <p>Dans ce type d'archive, on retrouve:
@@ -159,8 +159,8 @@ Pour fonctionner, ce type de fichier doit être déployé sur un serveur d'appli
   * Les ressources statiques : images, polices d'écriture...
   * Les autres dépendances logicielles sous forme de <em>JAR</em> dans un sous-dossier <code>lib</code>.</p>
 <h2 id="format-ear">Format EAR</h2>
-<p>Il signifie <strong><em>E</em>*nterprise </strong>AR<em><em>chive</em> pour les fichiers à l'extension <code>*.ear</code>.
-Ce format est exclusif aux applications </em>Jarkarta EE<em> et il ne peut uniquement être déployé sur des serveur d'applications supportant pleinement la plateforme </em>Jakarta EE*.</p>
+<p>Il signifie <strong><em>E</em></strong>nterprise <strong><em>AR</em></strong>chive pour les fichiers à l'extension <code>*.ear</code>.
+Ce format est exclusif aux applications <em>Jarkarta EE</em> et il ne peut uniquement être déployé sur des serveurs d'applications supportant pleinement la plateforme <em>Jakarta EE</em>.</p>
 <p><img alt="Structure EAR" src="https://docs.oracle.com/javaee/5/tutorial/doc/figures/overview-applicationModule.gif" /></p>
 <p><sub>Source: Oracle</sub></p>
 <p>Cette archive est en réalité un regroupement :</p>
@@ -181,8 +181,8 @@ Ce type de module est en désuétude, de même que les modules clients <em>JAR</
 <p>Dans un projet de type <em>EAR</em> chaque module à des fonctions bien définies.</p>
 <p>Les modules <em>EJB</em> représente la partie de traitement côté serveur où le traitement métier est effectué ainsi que la sauvegarde en base de données. En général pour de grande application, on crée un module <em>EJB</em> par zone fonctionnelle.</p>
 <p>Les modules <em>WAR</em> représente la partie client léger de l'application, il peut s'agit d'une application servant des pages web ou d'une application de type <em>SOAP</em> ou <em>REST</em>. On crée un module <em>WAR</em> par zone fonctionnelle et/ou par catégorie d'interface (interface web, REST, SOAP...).</p>
-<p><strong>Exemple :</strong> Dans un site marchand, on peut imaginer la gestion de stock et la préparation d'une commande comme deux zones fonctionnelles distinctes. Ainsi, nous avons deux modules <em>EJB</em> pour le traitement métier et au moins deux modules <em>WAR</em> pour la partie cliente. (Je précise au moins, car on pourrait imaginer pour un module <em>EJB</em> avoir une partie accessible à travers des pages web et une autres à travers une <em>API REST</em>, soit deux modules <em>WAR</em>).</p>
-<p>Cela permet un découpage logiciel plus propre. À l'avenir, il est d'autant plus simple de découper l'applicatif si l'on considère le découpage <strong>microservice</strong>.</p>
+<p><strong>Exemple :</strong> Dans un site marchand, on peut imaginer la gestion de stock et la préparation d'une commande comme deux zones fonctionnelles distinctes. Ainsi, nous avons deux modules <em>EJB</em> pour le traitement métier et au moins deux modules <em>WAR</em> pour la partie cliente. (Je précise au moins, car on pourrait imaginer pour un module <em>EJB</em> avoir une partie accessible à travers des pages web et une autre à travers une <em>API REST</em>, soit deux modules <em>WAR</em>).</p>
+<p>Cela permet un découpage logiciel plus propre. À l'avenir, il est d'autant plus simple de découper l'applicatif si l'on considère le découpage <strong>micro-service</strong>.</p>
 <hr />
               
             </div>

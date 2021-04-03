@@ -124,7 +124,7 @@
               
                 <h1 id="convention-java-bean">Convention Java Bean</h1>
 <h2 id="introduction">Introduction</h2>
-<p>Très rependu en <em>Jakarta EE</em>, <strong><em>Java Bean</em></strong> est un concept à maitriser!
+<p>Très rependu en <em>Jakarta EE</em>, <strong><em>Java Bean</em></strong> est un concept à maitriser !
 Un <em>Java Bean</em> est une classe dont son écriture doit respecter quelques règles.
 Les technologies de <em>Jakarta EE</em> s'appuient dessus pour fonctionner correctement.</p>
 <h2 id="principe-de-construction">Principe de construction</h2>
@@ -154,7 +154,7 @@ import java.util.Objects;
 
 // Classe publique.
 // Classe dérivable.
-// Implemente 'java.io.Serializable'.
+// Implémente 'java.io.Serializable'.
 public class Customer implements Serializable {
 
     // Numéro de série.
@@ -174,7 +174,7 @@ public class Customer implements Serializable {
     }
 
     // Facultatif:
-    // Deuxième constructeur avec paramètre pour plus de confort.
+    // Deuxième constructeur avec paramètres pour plus de confort.
     public Customer(final String givenName, final String familyName){
         this.givenName = givenName;
         this.familyName = familyName;
@@ -199,7 +199,7 @@ public class Customer implements Serializable {
 
     // Redéfinition de la méthode.
     // Lorsque l'on redéfinit l'égalité d'un objet, il faut obligatoirement redéfinir 'equals' et 'hashCode'.
-    // Le calcul de l'égalité est basé sur les même attributs que la méthode 'equals'.
+    // Le calcul de l'égalité est basé sur les mêmes attributs que la méthode 'equals'.
     @Override
     public int hashCode() {
         return Objects.hash(givenName, familyName);
@@ -246,8 +246,8 @@ La plupart des technologies <em>Jakarta EE</em> s'appuie sur <em>Java Bean</em> 
 <p>La sérialisation est un mécanisme apparu en Java 1.1 avec l'interface <code>java.io.Serializable</code>.
 Ce mécanisme est donc très vieux.
 Il permet à la <em>JVM</em> de transformer une instance de classe en flux de données binaire dont l'état peut être sauvegardé dans un fichier (sérialisé) puis être relu (dé-sérialisé) pour restituer l'état d'un programme.</p>
-<p>Afin de garantir que le mécanisme de sérialisation et dé-sérialisation fonctionne correctement, la //JVM// s'appuie sur la constante <code>serialVersionUID</code>. Une sorte de numéro de série de la classe.
-Si cette constante n'existe pas, c'est la <em>JVM</em> qui l'ajoute. La bonne pratique étant bien sûr de générer soit-même cet attribut afin d'alléger le traitement de la //JVM//.</p>
+<p>Afin de garantir que le mécanisme de sérialisation et dé-sérialisation fonctionne correctement, la <em>JVM</em> s'appuie sur la constante <code>serialVersionUID</code>. Une sorte de numéro de série de la classe.
+Si cette constante n'existe pas, c'est la <em>JVM</em> qui l'ajoute. La bonne pratique étant bien sûre de générer soi-même cet attribut afin d'alléger le traitement de la <em>JVM</em> et de garder le contrôle du numéro de version.</p>
 <hr />
               
             </div>

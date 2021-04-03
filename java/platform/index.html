@@ -132,9 +132,11 @@
               
                 <h1 id="plateforme">Plateforme</h1>
 <h2 id="introduction">Introduction</h2>
-<p>La plateforme Java se décline en deux éditions :
-  * <strong>Java SE</strong>: <em>Java Standard Edition</em>
-  * <strong>Java EE</strong>: <em>Java Enterprise Edition</em></p>
+<p>La plateforme Java se décline en deux éditions :</p>
+<ul>
+<li><strong>Java SE</strong>: <em>Java Standard Edition</em></li>
+<li><strong>Java EE</strong>: <em>Java Enterprise Edition</em></li>
+</ul>
 <p>Une édition est un ensemble de bibliothèques logicielles et d'outils intégrés à la plateforme.</p>
 <p><strong>Java SE</strong> est l'édition contenue par défaut lorsque vous installez Java que ce soit <em>OracleJDK</em>, <em>OpenJDK</em> ou encore <em>AdoptOpenJDK</em>.</p>
 <p><strong>Java EE</strong> est l'édition contenue dans les serveurs d'applications certifiés <strong>Java EE</strong>. Exemple : <em>Wildfly</em>, <em>Glassfish</em>, <em>Payara</em>, <em>WebLogic</em>, etc...</p>
@@ -148,23 +150,41 @@ Afin d'effectuer la transition en douceur, la Fondation Eclipse a publiée <stro
 <h3 id="vision-globale">Vision globale</h3>
 <p><img alt="Composition des plateformes" src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Java_Platforms.PNG" /></p>
 <p><sub>Source: Wikipédia</sub></p>
-<p><strong>Légende:</strong>
-  * <strong><em>JRE</em></strong>: <em>Java Runtime Environment</em>
-    * Environnement minimal pour l'exécution de programme Java.
-  * <strong><em>JRE Library</em></strong><br />
-    * Ensemble de bibliothèques logicielles standard.
-  * <strong><em>JVM</em></strong>: <em>Java Virtual Machine</em>
-    * Machine virtuelle permettant l'exécution du code compilé Java et de d'autres langages basés sur la <em>JVM</em>.
-  * <strong><em>JDK</em></strong>: <em>Java Development Kit</em>
-    * Ensemble d'outil fournit avec une plateforme pour le développement. (Exemple: le compilateur)
-  * <strong><em>JSR</em></strong>: <em>Java Specification Requests</em>
-    * Ensemble de spécification normalisé faisant évoluer la plateforme. Les <em>JSR</em> sont validés par une communauté (<em>JCP: Java Community Process</em>) avant d'intégrer une plateforme.
-  * <strong><em>Java SE</em></strong>: <em>Java Standard Edition</em>
-    * Plateforme de base de Java, il existe des variantes : avec ou sans <em>JDK</em>.
-  * <strong><em>Java EE</em></strong>: <em>Java Enterprise Edition</em>
-    * Plateforme d'entreprise Java, il existe des variantes: <em>Web Profile</em>, <em>Full Profile</em> ...
-  * <strong><em>Java FX</em></strong>
-    * Ensemble de bibliothèques logicielles pour la création de client lourd, successeur de <em>Swing</em>.      </p>
+<p><strong>Légende:</strong></p>
+<ul>
+<li><strong><em>JRE</em></strong>: <em>Java Runtime Environment</em><ul>
+<li>Environnement minimal pour l'exécution de programme Java.</li>
+</ul>
+</li>
+<li><strong><em>JRE Library</em></strong>  <ul>
+<li>Ensemble de bibliothèques logicielles standard.</li>
+</ul>
+</li>
+<li><strong><em>JVM</em></strong>: <em>Java Virtual Machine</em><ul>
+<li>Machine virtuelle permettant l'exécution du code compilé Java et d'autres langages basés sur la <em>JVM</em>.</li>
+</ul>
+</li>
+<li><strong><em>JDK</em></strong>: <em>Java Development Kit</em><ul>
+<li>Ensemble d'outil fournit avec une plateforme pour le développement. (Exemple: le compilateur)</li>
+</ul>
+</li>
+<li><strong><em>JSR</em></strong>: <em>Java Specification Requests</em><ul>
+<li>Ensemble de spécification normalisé faisant évoluer la plateforme. Les <em>JSR</em> sont validés par une communauté (<em>JCP: Java Community Process</em>) avant d'intégrer une plateforme.</li>
+</ul>
+</li>
+<li><strong><em>Java SE</em></strong>: <em>Java Standard Edition</em><ul>
+<li>Plateforme de base de Java, il existe des variantes : avec ou sans <em>JDK</em>.</li>
+</ul>
+</li>
+<li><strong><em>Java EE</em></strong>: <em>Java Enterprise Edition</em><ul>
+<li>Plateforme d'entreprise Java, il existe des variantes: <em>Web Profile</em>, <em>Full Profile</em> ...</li>
+</ul>
+</li>
+<li><strong><em>Java FX</em></strong><ul>
+<li>Ensemble de bibliothèques logicielles pour la création de client lourd, successeur de <em>Swing</em>.      </li>
+</ul>
+</li>
+</ul>
 <h4 id="java-se">Java SE</h4>
 <p><img alt="Plateforme Java SE" src="https://www.oracle.com/ocom/groups/public/@otn/documents/digitalasset/2167990.jpg" /></p>
 <p><sub>Source: Oracle</sub></p>
@@ -179,7 +199,7 @@ A partir de <strong>Java 9</strong>, <em>Java FX</em> est une plateforme indépe
 <p><sub>Source: Oracle</sub></p>
 <p>Voici en détail le contenu de la plateforme <strong>Java EE 8</strong>.
 Le contenu reste similaire pour <strong>Jakarta EE 8</strong>.</p>
-<p>En bleu foncé, les briques logicielles mise à jour depuis <em>Java EE 7</em>.
+<p>En bleu foncé, les briques logicielles misent à jour depuis <em>Java EE 7</em>.
 En orange, les nouvelles briques logicielles ajoutées en <em>Java EE 8</em>.</p>
 <p><strong>Détail de quelques technologies principalement utilisées:</strong></p>
 <ul>
@@ -188,7 +208,7 @@ En orange, les nouvelles briques logicielles ajoutées en <em>Java EE 8</em>.</p
 </ul>
 </li>
 <li><strong>JTA</strong>: <em>Java Transaction API</em><ul>
-<li>Technologie de gestion des transactions pour les base de données. </li>
+<li>Technologie de gestion des transactions pour les bases de données. </li>
 </ul>
 </li>
 <li><strong>Servlet</strong> <ul>
@@ -208,7 +228,7 @@ En orange, les nouvelles briques logicielles ajoutées en <em>Java EE 8</em>.</p
 </ul>
 </li>
 <li><strong>JPA</strong>: <em>Java Persistence API</em><ul>
-<li>Technologie de persistance de données pour les base de données.  </li>
+<li>Technologie de persistance de données pour les bases de données.  </li>
 </ul>
 </li>
 <li><strong>JAX-RS</strong><ul>

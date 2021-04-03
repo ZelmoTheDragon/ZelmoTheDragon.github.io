@@ -157,15 +157,17 @@ Si elles ne sont pas respectées des erreurs se produiront à la génération de
 </ul>
 <h3 id="annotation">Annotation</h3>
 <p>Afin d'enrichir la documentation, il est possible de placer des annotations.</p>
-<p><strong>A connaître :</strong>
-  * <code>@param</code>: Suivit d'un nom du paramètre ou du générique pour le documenter.
-  * <code>@return</code>: Documenter le résultat d'une méthode.
-  * <code>@throws</code>: Documenter le ou les exceptions levées par une méthode quelles soit déclarées dans la signature ou non.
-  * <code>@exception</code> Documenter le ou les exceptions que l'appel de la méthode peut engendrer implicitement.
-  * <code>@author</code> Indique l'auteur de la classe ou méthode.
-  * <code>@since</code> Indique la version de l'application quand la classe ou la méthode a été créée.
-  * <code>@deprecated</code> Documenter pourquoi cet élément est déprécié.
-  * <code>@see</code> Suivit du nom complet de classe pour indiquer une référence documentaire.</p>
+<p><strong>A connaître :</strong></p>
+<ul>
+<li><code>@param</code>: Suivit d'un nom du paramètre ou du générique pour le documenter.</li>
+<li><code>@return</code>: Documenter le résultat d'une méthode.</li>
+<li><code>@throws</code>: Documenter le ou les exceptions levées par une méthode qu'elles soit déclarées dans la signature ou non.</li>
+<li><code>@exception</code> Documenter le ou les exceptions que l'appel de la méthode peut engendrer implicitement.</li>
+<li><code>@author</code> Indique l'auteur de la classe ou méthode.</li>
+<li><code>@since</code> Indique la version de l'application quand la classe ou la méthode a été créée.</li>
+<li><code>@deprecated</code> Documenter pourquoi cet élément est déprécié.</li>
+<li><code>@see</code> Suivit du nom complet de classe pour indiquer une référence documentaire.</li>
+</ul>
 <p>Certaines annotations peuvent s'écrire entre accolades pour considérer un bloc:</p>
 <pre><code class="language-java">
 /** {@code Objects.equals(a, b)} */
@@ -180,7 +182,7 @@ Si elles ne sont pas respectées des erreurs se produiront à la génération de
  * Se base sur la technologie Jakarta EE JPA.
  *
  * @param &lt;E&gt; Une entité persistante sérialisable
- * @author Moselle Academy
+ * @author Zelmo Academy
  * @see Serializable
  * @since 1.0
  */
@@ -191,7 +193,7 @@ public abstract class AbstractDAO&lt;E extends Serializable&gt;{
      * Sauvegarder une entité dans le contexte de persistance.
      *
      * @param entity Une entité persistante à créer ou mettre à jour
-     * @return La valeur {@code true} si et seulement si l'état de la base de données à changé, 
+     * @return La valeur {@code true} si et seulement si l'état de la base de données a changé, 
      * sinon la valeur {@code false} est retournée
      * @throws DAOException si l'entité ne respecte pas les contraintes d'intégrité de la base de données
      */
@@ -226,7 +228,7 @@ Ces balises peuvent posséder l'attribut <code>style</code> pour utiliser les pr
  * &lt;/ul&gt;
  * &lt;b style=&quot;color:red;&quot;&gt;Toutes les actions métiers d'un consommateur seront tracées.&lt;/b&gt;
  * 
- * @author Moselle Academy
+ * @author Zelmo Academy
  */
 public class Customer implements Serializable {
 
@@ -255,8 +257,8 @@ public class Customer implements Serializable {
 }
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-Vous pouvez insérer des blocs de code sur plusieurs lignes en conservant le formatage avec la balise <code>pre</code>.
+<p><strong>Note</strong></p>
+<p>Vous pouvez insérer des blocs de code sur plusieurs lignes en conservant le formatage avec la balise <code>pre</code>.
 Vous pouvez également utiliser la syntaxe <code>#</code> pour placer une ancre vers une méthode, un attribut ou une constante de cette même classe.</p>
 </blockquote>
 <hr />

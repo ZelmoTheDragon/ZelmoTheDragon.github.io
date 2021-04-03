@@ -138,8 +138,8 @@ C'est la capacité d'un objet d'opter pour le type d'un de ces parents sans chan
 <li>Faire du faible couplage</li>
 </ul>
 <blockquote>
-<p><strong>Note</strong>
-La notion de hiérarchie de classe doit être respectée !</p>
+<p><strong>Note</strong></p>
+<p>La notion de hiérarchie de classe doit être respectée !</p>
 </blockquote>
 <h2 id="cas-dusage">Cas d'usage</h2>
 <p>Considérons les classes suivantes :</p>
@@ -245,7 +245,7 @@ public void ownerAskPet(Pet anyPet){
     anyPet.talk();
 }
 </code></pre>
-<p>Cette méthode veut pouvoir demander à un animal de compagnie de parler, mais quelque soit l'animal en question.
+<p>Cette méthode veut pouvoir demander à un animal de compagnie de parler, mais quel que soit l'animal en question.
 De plus, la réponse de l'animal se doit d'être spécifique au type réel.</p>
 <pre><code class="language-java">Cat tom = new Cat();
 ownerAskPet(tom);        // Sortie console: 'Meow'
@@ -261,10 +261,10 @@ ownerAskPet(sylvestre); // Sortie console: 'Meow'
 <p>Le <strong>polymorphisme</strong> permet de naturellement type une classe dans sa hiérarchie montante.
 Le <strong>transtypage</strong> permet de forcer le type d'un objet vers un objet.
 Il faut être prudent lors de son usage car le compilateur Java n'est pas en mesure de vérifier le typage.
-Si le typage est faux, à l'exécution du programme vous aurez une erreur de type : 'java.lang.ClassCastException'.</p>
+Si le typage est faux, à l'exécution du programme vous aurez une erreur de type : <code>java.lang.ClassCastException</code>.</p>
 <blockquote>
-<p><strong>Note</strong>
-En Java le transtypage est aussi connu sous le nom de <strong>//cast//</strong>.</p>
+<p><strong>Note</strong></p>
+<p>En Java le transtypage est aussi connu sous le nom de <strong>//cast//</strong>.</p>
 </blockquote>
 <pre><code class="language-java">Pet tom = new Cat();  // tom est en réalité de type 'Cat'.
 
@@ -285,8 +285,8 @@ Dog tomDog = (Dog) tom;
 
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-Le <strong>transtypage</strong> est du polymorphisme non naturel !
+<p><strong>Note</strong></p>
+<p>Le <strong>transtypage</strong> est du polymorphisme non naturel !
 Soyez très prudent lors de son usage, si possible éviter de l'utiliser abusivement.</p>
 </blockquote>
 <hr />

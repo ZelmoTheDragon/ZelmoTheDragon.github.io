@@ -273,7 +273,7 @@ Function&lt;String, String&gt; upper1 = t -&gt; t.toUpperCase();
                                  // Le type de 't' est inféré, il est porté par le membre de gauche
                                  // on peut donc omettre le typage.
                                  // Les parenthèses sont optionnelles car il n'y a qu'un seul paramètre.
-                                 // Les accolades ne sont plus nécessaire car le traitement tient en une ligne.
+                                 // Les accolades ne sont plus nécessaires car le traitement tient en une ligne.
 
 // Passage par référence
 Function&lt;String, String&gt; upper2 = String::toUpperCase;
@@ -286,8 +286,8 @@ Function&lt;String, String&gt; upper2 = String::toUpperCase;
 <p>Lors de l'écriture d'une expression lambda privilégier le passage par référence de fonction ou l'écriture sur une ligne.
 Les écritures en blocs sont à éviter, cela signifie que vous pouvez extraire le bloc dans une autre fonction.</p>
 <blockquote>
-<p><strong>Note</strong>
-Toutes les fonctions d'une classe peuvent être passées par référence.
+<p><strong>Note</strong></p>
+<p>Toutes les fonctions d'une classe peuvent être passées par référence.
 Pour le constructeur la syntaxe est la suivante : <code>MyClass::new</code>.</p>
 </blockquote>
 <h2 id="concept">Concept</h2>
@@ -301,8 +301,8 @@ Pour le constructeur la syntaxe est la suivante : <code>MyClass::new</code>.</p>
 <li>Structure de données immuables</li>
 </ul>
 <blockquote>
-<p><strong>Note</strong>
-En Java nous ne ferons pas de distinction entre une <strong>méthode</strong> et une <strong>fonction</strong>.
+<p><strong>Note</strong></p>
+<p>En Java nous ne ferons pas de distinction entre une <strong>méthode</strong> et une <strong>fonction</strong>.
 Ce sont des synonymes.</p>
 </blockquote>
 <h3 id="fonction-pure">Fonction pure</h3>
@@ -354,8 +354,8 @@ public void showUniversalAnswer(){
 }
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-L'effet de bord n'est pas quelque chose de fondamentalement mauvais, il faut simplement maîtriser son impact.
+<p><strong>Note</strong></p>
+<p>L'effet de bord n'est pas quelque chose de fondamentalement mauvais, il faut simplement maîtriser son impact.
 Dans une application toutes les fonctions ne sont pas tenues d'être des fonctions pures.
 Si une application ne produit pas d'effet de bord, c'est qu'elle ne fait rien.</p>
 </blockquote>
@@ -380,8 +380,8 @@ public int doSomething(){
 }
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-On peut directement remplacer une fonction par le résultat de celle-ci sans que cela ne perturbe l'algorithme.</p>
+<p><strong>Note</strong></p>
+<p>On peut directement remplacer une fonction par le résultat de celle-ci sans que cela ne perturbe l'algorithme.</p>
 </blockquote>
 <h3 id="fonction-dordre-superieur">Fonction d'ordre supérieur</h3>
 <p>Une fonction d'ordre supérieur est une fonction qui prend en paramètre une fonction et/ou qui retourne une fonction.</p>
@@ -457,19 +457,19 @@ public void log(final Level level, Supplier&lt;String&gt; message){
                            // L'application partielle permet de résoudre le paramètre automatiquement.   
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-Le passage par référence de fonction en Java s'effectue avec la syntaxe <code>::</code>.
+<p><strong>Note</strong></p>
+<p>Le passage par référence de fonction en Java s'effectue avec la syntaxe <code>::</code>.
 La fonction <code>forEach</code> prend en paramètre un type <code>Consumer</code>, Java est en mesure de transtyper ce paramètre avec la fonction <code>println</code>.
 Pour se faire la signature de la fonction <code>Customer.accept</code> et <code>System.out.println</code> doivent correspondre.
 Ce qui bien entendu le cas ici.
 Le nom de la fonction n'entre pas en compte lors du transtypage fonctionnel, seuls les paramètres d'entrée et de sortie compte.</p>
 </blockquote>
 <h3 id="structure-de-donnees-immuables">Structure de données immuables</h3>
-<p>Comme une fonction pure ne doit pas produire d'effet de bord, il est donc logique que les objets passés en paramètres ne puissent pas être modifié par référence.
+<p>Comme une fonction pure ne doit pas produire d'effet de bord, il est donc logique que les objets passés en paramètres ne puissent pas être modifiés par référence.
 Il faut à présent considérer les objets manipulés par ces fonctions comme des valeurs et non plus comme des références.
 Pour se faire les objets seront immuables.</p>
 <p><strong>Exemple :</strong></p>
-<pre><code class="language-java">// Classe de donnés immuables.
+<pre><code class="language-java">// Classe de données immuables.
 // Impossible de changer l'état d'un objet après instanciation.
 public final class Cutomer {
 
@@ -515,8 +515,8 @@ public final class Cutomer {
 <li>Un objet immuable n'est pas soumis au problème d'accès concurrentiel <em>(thread-safe)</em>.</li>
 </ul>
 <blockquote>
-<p><strong>Note</strong>
-Effectivement, la <em>JVM</em> est obligée de faire une nouvelle allocation mémoire pour chaque instanciation.
+<p><strong>Note</strong></p>
+<p>Effectivement, la <em>JVM</em> est obligée de faire une nouvelle allocation mémoire pour chaque instanciation.
 Généralement ce type d'objet immuable possède un cycle de vie assez court, ce qui n'est pas un problème.
 Le mécanisme de ramasse miette sait très bien gérer ce cas de figure.</p>
 </blockquote>
@@ -525,7 +525,7 @@ Le mécanisme de ramasse miette sait très bien gérer ce cas de figure.</p>
 <p>On souhaite réaliser un validateur d'objet de données générique en pure Java avec l'approche fonctionnelle.</p>
 <h3 id="structure-de-donnees">Structure de données</h3>
 <pre><code class="language-java">// Exemple complet.
-// Classe de donnés immuable.
+// Classe de données immuables.
 public final class Cutomer {
 
   public final String givenName;
@@ -594,8 +594,8 @@ public final class Cutomer {
 }
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-Pour ce cas pratique, n'importe quelle classe de données peut faire l'affaire.</p>
+<p><strong>Note</strong></p>
+<p>Pour ce cas pratique, n'importe quelle classe de données peut faire l'affaire.</p>
 </blockquote>
 <p>Si un objet n'est pas valide, la validation produira une exception.</p>
 <h3 id="classe-dexception">Classe d'exception</h3>
@@ -610,7 +610,7 @@ Pour ce cas pratique, n'importe quelle classe de données peut faire l'affaire.<
 }
 </code></pre>
 <h3 id="classe-du-validateur">Classe du Validateur</h3>
-<pre><code class="language-java">// On applique la généricité pour que cette classe travail avec n'importe quelle type d'instance.
+<pre><code class="language-java">// On applique la généricité pour que cette classe travail avec n'importe quel type d'instance.
 // Patron de conception: 'Monad'.
 public final class Validator&lt;T&gt; {
 
@@ -673,7 +673,7 @@ public final class Validator&lt;T&gt; {
 
     // Exemple de prédicat:
     // ??? != null
-    // Un simple condition, ici doit être différent de nul.
+    // Une simple condition, ici doit être différent de nul.
     // Où ??? doit être un objet de type R. (confère généricité)
 
     // Ci-dessous, avec l'application partielle, on réalise également de la composition de fonction
@@ -786,10 +786,10 @@ public final class Validator&lt;T&gt; {
 <p>On peut créer une classe utilitaire avec plein de méthode statique pour les prédicats tel que <code>checkEmail</code>.
 Ceci permettrait de créer du code réutilisable facilement.</p>
 <p>Si vous examinez attentivement la classe <code>Validator&lt;T&gt;</code> vous constaterez que les fonctions ne sont pas pures.
-a votre avis comment corriger cela ?</p>
+À votre avis comment corriger cela ?</p>
 <blockquote>
-<p><strong>Note</strong>
-Malgré le passage par référence et l'application partielle, le compilateur est en mesure de résoudre le typage statique de Java par inférence.
+<p><strong>Note</strong></p>
+<p>Malgré le passage par référence et l'application partielle, le compilateur est en mesure de résoudre le typage statique de Java par inférence.
 Pas de problème de ce côté-là.</p>
 </blockquote>
 <hr />

@@ -73,7 +73,7 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Invocation Dynamique</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#introduction">` Introduction</a>
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#introspection">Introspection</a>
         <ul>
@@ -83,7 +83,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#mise-en-uvre">` Mise en œuvre</a>
+    <li class="toctree-l2"><a class="reference internal" href="#mise-en-uvre">Mise en œuvre</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#principe-de-fonctionnement">Principe de fonctionnement</a>
     </li>
@@ -135,17 +135,21 @@
             <div class="section">
               
                 <h1 id="invocation-dynamique">Invocation dynamique</h1>
-<h2 id="introduction">` Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 <p>L'invocation dynamique est une technique avancée en Java pour appeler des méthodes sans posséder directement les objets concernés.</p>
-<p><strong>Avantages :</strong>
-  * Code plus dynamique
-  * Code plus générique</p>
-<p><strong>Inconvénient :</strong>
-  * Concept complexe
-  * Beaucoup plus verbeux</p>
+<p><strong>Avantages :</strong></p>
+<ul>
+<li>Code plus dynamique</li>
+<li>Code plus générique</li>
+</ul>
+<p><strong>Inconvénient :</strong></p>
+<ul>
+<li>Concept complexe</li>
+<li>Beaucoup plus verbeux</li>
+</ul>
 <blockquote>
-<p><strong>Note</strong>
-Contrairement aux idées reçues, l'invocation dynamique en Java et même plus rapide que l'appel classique de méthodes (Quand elle respecte les règles de visibilités).
+<p><strong>Note</strong></p>
+<p>Contrairement aux idées reçues, l'invocation dynamique en Java et même plus rapide que l'appel classique de méthodes (Quand elle respecte les règles de visibilités).
 La <em>JVM</em> sait optimiser ce code.
 En revanche l'invocation par réflexion est à éviter, elle est plus lente car la <em>JVM</em> ne peut optimiser ce code.</p>
 </blockquote>
@@ -194,9 +198,9 @@ System.out.println(superClass);
 
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-Avec l'introspection vous pouvez naviguez dans la structure d'un classe est voir toutes ses caractéristiques.
-cette approche permet en fonction de la structure d'un classe d'opter pour un comportement différent dans votre algorithme. </p>
+<p><strong>Note</strong></p>
+<p>Avec l'introspection vous pouvez naviguez dans la structure d'une classe est voir toutes ses caractéristiques.
+cette approche permet en fonction de la structure d'une classe d'opter pour un comportement différent dans votre algorithme. </p>
 </blockquote>
 <h3 id="usage-avance">Usage avancé</h3>
 <p><strong>Problématique :</strong></p>
@@ -226,12 +230,12 @@ cette approche permet en fonction de la structure d'un classe d'opter pour un co
 }
 </code></pre>
 <p>Dans le code ci-dessus, on souhaite récupérer la classe de <code>E</code>.
-Pour se faire, une manière simple est de passer par l'héritage.
-Cette méthode est viable, mais que ce passe-t-il lorsqu'un nombre important de classe enfant de <code>AbstractDAO</code> se présente ?
+Pour ce faire, une manière simple est de passer par l'héritage.
+Cette méthode est viable, mais que se passe-t-il lorsqu'un nombre important de classe enfant de <code>AbstractDAO</code> se présente ?
 Est-il possible de factoriser ce code ?</p>
 <blockquote>
-<p><strong>Réponse</strong>
-OUI</p>
+<p><strong>Réponse</strong></p>
+<p>OUI</p>
 </blockquote>
 <p><strong>Solution :</strong></p>
 <p>L'introspection permet aussi de récupérer le type d'un générique.</p>
@@ -259,12 +263,12 @@ OUI</p>
 }
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-Malheureusement le transtypage est obligatoire ici.
+<p><strong>Note</strong></p>
+<p>Malheureusement le transtypage est obligatoire ici.
 Java polymorphe les classes ici en <code>java.lang.reflect.Type</code>.
 Cette interface permet à Java d'englober les notions : de variables, de primitives, de tableaux, de génériques et même de type brute.</p>
 </blockquote>
-<h2 id="mise-en-uvre">` Mise en œuvre</h2>
+<h2 id="mise-en-uvre">Mise en œuvre</h2>
 <h3 id="principe-de-fonctionnement">Principe de fonctionnement</h3>
 <p>Pour utiliser l'invocation dynamique, il est nécessaire d'observer quelques règles :
   * Respecter la visibilité des attributs, des méthodes, des classes.
@@ -311,7 +315,7 @@ var setEmailSignature = MethodType.methodType(void.class, String.class);
 // 1er paramètre: Type de classe source.
 // 2e paramètre: Nom exact de la méthode cible à invoquer.
 // 3e paramètre: Type de retour et paramètre de la méthode cible à invoquer.
-// On obtiens une méthode d'instance mais rattachée à aucun objet:  '.setEmail()'.
+// On obtient une méthode d'instance mais rattachée à aucun objet:  '.setEmail()'.
 var setEmailHandler = lookup.findVirtual(
         Customer.class,
         &quot;setEmail&quot;,
@@ -319,11 +323,11 @@ var setEmailHandler = lookup.findVirtual(
     );
 
 // Lier la méthode dynamique avec l'instance réelle.
-// On obtiens une méthode d'instance rattaché à un objet: 'customer.setEmail()'.
+// On obtient une méthode d'instance rattaché à un objet: 'customer.setEmail()'.
 var setEmailBinded = setEmailHandler.bindTo(customer);
 
 // Invocation dynamique
-// On appel la méthode avec les bons paramètres: 'customer.setEmail(&quot;john.doe@sample.com&quot;)'.
+// On appelle la méthode avec les bons paramètres: 'customer.setEmail(&quot;john.doe@sample.com&quot;)'.
 setEmailBinded.invokeExact(&quot;john.doe@sample.com&quot;); 
 
 System.out.println(customer);
@@ -332,9 +336,9 @@ System.out.println(customer);
 
 </code></pre>
 <h3 id="cas-pratique-avance">Cas pratique avancé</h3>
-<p>Comment générer le résultat d'un méthode <code>toString</code> de manière générique pour n'importe quel type d'objet ?</p>
+<p>Comment générer le résultat d'une méthode <code>toString</code> de manière générique pour n'importe quel type d'objet ?</p>
 <blockquote>
-<p>A vous de coder !</p>
+<p>À vous de coder !</p>
 </blockquote>
 <p><strong>Possible solution :</strong></p>
 <pre><code class="language-java">package fr.zelmoacademy.util;
@@ -521,11 +525,8 @@ public class Customer{
     }
 }
 
-
-
 </code></pre>
 <hr />
-<p>[[dev:java:index|Retour au sommaire]]</p>
               
             </div>
           </div>

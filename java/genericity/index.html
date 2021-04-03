@@ -163,7 +163,7 @@ ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
 <pre><code class="language-java">// Fonctionne sans problème avec le polymorphisme.
 List&lt;String&gt; list = new ArrayList&lt;&gt;();
 </code></pre>
-<pre><code class="language-java">// En Java 10, la généricité doit être porté par le membre de droite avec le mot-clef 'var'.
+<pre><code class="language-java">// En Java 10, la généricité doit être portée par le membre de droite avec le mot-clef 'var'.
 var list = new ArrayList&lt;String&gt;();
 </code></pre>
 <pre><code class="language-java">
@@ -189,8 +189,8 @@ list.add(code);
                         // La variable 'code' n'est pas de type 'java.lang.String'
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-La généricité assure le typage statique de Java.
+<p><strong>Note</strong></p>
+<p>La généricité assure le typage statique de Java.
 Elle permet de factoriser du comportement.</p>
 </blockquote>
 <h2 id="mise-en-uvre">Mise en œuvre</h2>
@@ -217,7 +217,8 @@ public class CustomerDAO implements DAO&lt;Customer&gt;{ /* ... */ }
 </code></pre>
 <h3 id="convention-de-nommage">Convention de nommage</h3>
 <p>En Java le type générique abstrait doit être <strong>une lettre en majuscule</strong>.
-Cette lettre n'est pas choisi au hasard, elle possède une signification.</p>
+Techniquement, il peut s'agir aussi d'un mot, mais éviter cette approche.
+Cette lettre n'est pas choisie au hasard, elle possède une signification.</p>
 <p><strong>Exemples:</strong></p>
 <ul>
 <li><strong>T</strong> =&gt; <em>Type</em> : Type quelconque</li>
@@ -273,8 +274,8 @@ La notation en diamant est donc portée par la méthode:</p>
 }
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-Fonctionne aussi pour des méthodes <strong>statiques</strong>.
+<p><strong>Note</strong></p>
+<p>Fonctionne aussi pour des méthodes <strong>statiques</strong>.
 Soyez prudent avec les méthodes génériques, dans certains cas le typage n'est résolu qu'a l'exécution !
 Vous aurez dans ce cas une erreur de type <code>java.lang.ClassCastException</code>.</p>
 </blockquote>
@@ -310,8 +311,8 @@ public abstract class AbstractDAO&lt;E extends Entity&gt;{ /* ... */ }
 <p>Dans l'exemple ci-dessus, le générique <code>E</code> est pseudo-typé par <code>Entity</code>.
 Cela signifie que <code>E</code> pour être remplacé dans les classes enfants par n'importe quelle classe qui hérite de <code>Entity</code>.</p>
 <blockquote>
-<p><strong>Note</strong>
-Pour être précis, <code>&lt;X extends Y&gt;</code> comprend tous les sous-types de <code>Y</code> <strong>OU</strong> le type <code>Y</code> lui-même.</p>
+<p><strong>Note</strong></p>
+<p>Pour être précis, <code>&lt;X extends Y&gt;</code> comprend tous les sous-types de <code>Y</code> <strong>OU</strong> le type <code>Y</code> lui-même.</p>
 </blockquote>
 <p><strong>Implémentation :</strong></p>
 <pre><code class="language-java">public class Customer implements Entity{ /* ... */ }
@@ -377,8 +378,8 @@ public abstract class AbstractDAO&lt;E extends Entity&lt;K&gt;, K&gt; {
 } 
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-Il est important de résoudre la généricité en profondeur.
+<p><strong>Note</strong></p>
+<p>Il est important de résoudre la généricité en profondeur.
 En l'absence de cette déclaration, Java considèrera le générique manquant de type <code>java.lang.Object</code>.
 Ce qui peut amener à faire du <strong>transtypage</strong>, une pratique à éviter.</p>
 </blockquote>
@@ -445,8 +446,8 @@ Dans ce cas, plutôt que d’omettre la généricité en profondeur, on utilise 
 <p>Dans cette déclaration <code>&lt;E extends Entity&lt;?&gt; &gt;</code>, <code>E</code> doit être un sous-type de <code>Entity</code>.
 En revanche, on ne se soucie pas du type générique porté par <code>Entity</code>.</p>
 <blockquote>
-<p><strong>Note</strong>
-Même si <code>?</code> se perçoit comme <code>java.lang.Object</code>, en réalité, il faut le considérer comme un type quelconque.
+<p><strong>Note</strong></p>
+<p>Même si <code>?</code> se perçoit comme <code>java.lang.Object</code>, en réalité, il faut le considérer comme un type quelconque.
 Lors de l'usage d'un <code>&lt;?&gt;</code> dans la généricité, le développeur doit s'engager à ne pas faire référence à ce générique.</p>
 </blockquote>
 <p><strong>Exemple :</strong></p>
@@ -479,8 +480,8 @@ var text = (String) anyList.get(0);
 
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-Soyez prudent lors d'un transtypage !
+<p><strong>Note</strong></p>
+<p>Soyez prudent lors d'un transtypage !
 Le compilateur ne peut pas vérifier le typage pour vous !</p>
 </blockquote>
 <p><strong>Conclusion :</strong></p>

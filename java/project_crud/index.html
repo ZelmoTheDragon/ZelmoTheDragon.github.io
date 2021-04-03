@@ -160,7 +160,7 @@
 <h2 id="introduction">Introduction</h2>
 <p>L'objectif de cet article est de réaliser une application <em>REST (</em><em>RE</em><em>presentational </em><em>S</em><em>tate </em><em>T</em><em>ransfer)</em> en Java avec les technologies <em>Jakarta EE 8</em>.
 Le format d'échange de donnée sera <em>JSON (</em><em>J</em><em>ava</em><em>S</em><em>cript </em><em>O</em><em>bject </em><em>N</em><em>otation)</em>.</p>
-<p>Il s’agira d'une simple application <strong><em>CRUD</em>* (</strong>C<strong>reate </strong>R<strong>ead </strong>U<strong>pade </strong>D*<em>elete)</em>. Sans logique métier particulier.</p>
+<p>Il s’agira d'une simple application <strong><em>CRUD</em></strong> (<strong><em>C</em></strong>reate <strong><em>R</em></strong>ead <strong><em>U</em></strong>pade <strong><em>D</em></strong>elete). Sans logique métier particulier.</p>
 <blockquote>
 <p>Nom de code : <strong>Dyna</strong>
 Une application dynamique et générique pour les opérations de <em>CRUD</em>.</p>
@@ -184,14 +184,16 @@ Une application dynamique et générique pour les opérations de <em>CRUD</em>.<
    - feature2  
    - ...
 </code></pre>
-<p>Légende:
-  * <code>fr.zelmoacademy.dyna</code>: <em>package</em> racine du projet.
-  * <code>common</code>: Partie commune de tout le projet (c'est ici que nous travaillerons).
-  * <code>controller</code>: Partie contrôleur <em>REST</em>.
-  * <code>persistence</code>: Partie modèle et persistance en base de données.
-  * <code>service</code>: Partie traitement applicatif.
-  * <code>util</code>/ Classe utilitaire.
-  * <code>feature1</code>, <code>feature2</code>, ... : Partie spécifique à une zone fonctionnelle.</p>
+<p><strong>Légende:</strong></p>
+<ul>
+<li><code>fr.zelmoacademy.dyna</code>: <em>package</em> racine du projet.</li>
+<li><code>common</code>: Partie commune de tout le projet (c'est ici que nous travaillerons).</li>
+<li><code>controller</code>: Partie contrôleur <em>REST</em>.</li>
+<li><code>persistence</code>: Partie modèle et persistance en base de données.</li>
+<li><code>service</code>: Partie traitement applicatif.</li>
+<li><code>util</code>/ Classe utilitaire.</li>
+<li><code>feature1</code>, <code>feature2</code>, ... : Partie spécifique à une zone fonctionnelle.</li>
+</ul>
 <blockquote>
 <p><strong>Note</strong>
 Afin de simplifier la structure du projet, l'application sera une archive de type <strong>WAR</strong>.
@@ -200,10 +202,12 @@ Mais rien ne vous empêche d'utiliser le format <strong>EAR</strong>.</p>
 <h2 id="couche-de-persistance">Couche de persistance</h2>
 <h3 id="entite">Entité</h3>
 <p>Pour réduire la quantité de ligne de code, les entités persistances seront manipulées dans toutes les couches de notre architecture logicielle.
-Pour cela nous utiliserons les annotations <em>Jakarta EE</em> pour :
-  * Réaliser la liaison avec la base données (avec <strong>JPA</strong>.
-  * Réaliser la conversion au format <em>JSON</em> (avec <strong>JSON-B</strong>).
-  * Porter les contraintes de validation des attributs (avec <strong>BeanValidation</strong>).</p>
+Pour cela nous utiliserons les annotations <em>Jakarta EE</em> pour :</p>
+<ul>
+<li>Réaliser la liaison avec la base données (avec <strong>JPA</strong>.</li>
+<li>Réaliser la conversion au format <em>JSON</em> (avec <strong>JSON-B</strong>).</li>
+<li>Porter les contraintes de validation des attributs (avec <strong>BeanValidation</strong>).</li>
+</ul>
 <p>Afin de regrouper nos entités sous une même hiérarchie de classe, nous codons cette interface commune à toutes les entités:</p>
 <pre><code class="language-java">package fr.zelmoacademy.dyna.common.persistence;
 
@@ -292,6 +296,7 @@ public abstract class AbstractEntity implements Identifiable&lt;UUID&gt;, Serial
     // ...
 
 }
+
 </code></pre>
 <p><strong>Exemple d'entité concrète :</strong></p>
 <pre><code class="language-java">package fr.zelmoacademy.dyna.customer;
@@ -401,7 +406,7 @@ public class UUIDConverter implements AttributeConverter&lt;UUID, String&gt; {
 </code></pre>
 <h3 id="alignement-cdi">Alignement CDI</h3>
 <p>La technologie <strong>CDI</strong> <em>(</em><em>C</em><em>ontext </em><em>D</em><em>ependency </em><em>I</em><em>njection)</em> est une technologie qui prend de l'ampleur dans <em>Jakarta EE</em>.
-A ce titre nous pouvons unifier les injections de dépendance à travers CDI.</p>
+À ce titre nous pouvons unifier les injections de dépendance à travers CDI.</p>
 <pre><code class="language-java">package fr.zelmoacademy.dyna.common.persistence;
 
 import ...;
@@ -586,7 +591,7 @@ public class CommonService implements Serializable {
     // JTA:Java Transaction API
     // Gestionnaire de transaction
     // Par défaut le EJB gèrent automatiquement les transactions
-    // Mais dans de rare cas, il peut être nécessaire de de définir ce comportement soit-même
+    // Mais dans de rare cas, il peut être nécessaire de définir ce comportement soi-même
 
 
     // JTA: Indique que cette méthode requiert une nouvelle transaction.
@@ -650,7 +655,7 @@ public class CommonService {
     // Il est nécessaire d'ajouter l'annotation @Transactional pour avoir un comportement
     // similaire aux EJB.
 
-    // Dans de rare cas, il peut être nécessaire de de définir ce comportement soit-même
+    // Dans de rare cas, il peut être nécessaire de définir ce comportement soi-même
     // Pour cela, il suffit de porter l'annotation @Transactional sur les méthodes.
 
     // Exiger une nouvelle transaction pour méthode.
@@ -664,15 +669,15 @@ public class CommonService {
 }
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-Effectivement, les EJB ne sont plus aussi indispensable qu'avant.
+<p><strong>Note</strong></p>
+<p>Effectivement, les EJB ne sont plus aussi indispensables qu'avant.
 Cette nouvelle écriture est valable depuis <strong>Java EE 7</strong>.
 Source: [[https://blogs.oracle.com/theaquarium/jta-12-its-not-your-grandfathers-transactions-anymore | Blog Oracle]]</p>
 </blockquote>
 <h2 id="couche-de-controle">Couche de contrôle</h2>
 <h3 id="entite-dynamique">Entité dynamique</h3>
 <p>Nous allons mettre en œuvre une énumération qui va porter en lui toute la spécificité de notre <em>CRUD</em>.
-Il arrive un stade où on ne peut plus être générique, afin de simplifier le code aux maximum, cette partie spécifique va se limiter à une seule classe.</p>
+Il arrive un stade où on ne peut plus être générique, afin de simplifier le code aux maximums, cette partie spécifique va se limiter à une seule classe.</p>
 <pre><code class="language-java">package fr.zelmoacademy.dyna;
 
 import ...;
@@ -705,7 +710,7 @@ public enum DynamicEntity {
         this.identifierConverter = identifierConverter;
     }
 
-    // A partir du nom de l'entité
+    // À partir du nom de l'entité
     // Rechercher la valeur de l'enumération correspondante.
     public static Optional&lt;DynamicEntity&gt; fromName(final String name) {
         return Stream
@@ -715,7 +720,7 @@ public enum DynamicEntity {
     }
 
     // Convertir une clef primaire de type 'String'
-    // en autre autre type (polymorphé en 'Object')
+    // en autre type (polymorphé en 'Object')
     public Object convertAsIdentifier(final String id) {
         return identifierConverter.apply(id);
     }
@@ -732,8 +737,8 @@ public enum DynamicEntity {
 }
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-A présent, lorsque le développeur souhaite ajouter une entité dans le <em>CRUD</em>, il suffira d'ajouter une entrée dans cette énumération.
+<p><strong>Note</strong></p>
+<p>À présent, lorsque le développeur souhaite ajouter une entité dans le <em>CRUD</em>, il suffira d'ajouter une entrée dans cette énumération.
 Exemple: <code>CUSTOMER("customer", Customer.class, UUID::fromString)</code>.</p>
 </blockquote>
 <h3 id="convertisseur-dynamique">Convertisseur dynamique</h3>
@@ -818,7 +823,7 @@ import ...;
 @Consumes(MediaType.APPLICATION_JSON)
 public class CommonController {
 
-    // Injection du servie commun pour toutes les opérations de CRUD.
+    // Injection du service commun pour toutes les opérations de CRUD.
     @Inject
     private CommonService service;
 
@@ -932,6 +937,7 @@ public class GenericExceptionMapper implements ExceptionMapper&lt;RuntimeExcepti
                 .createObjectBuilder()
                 .add(&quot;error&quot;, exception.getClass().getCanonicalName())
                 .add(&quot;message&quot;, exception.getMessage())
+                .add(&quot;date&quot;, LocalDateTime.now())
                 .build();
 
         return Response
@@ -944,8 +950,8 @@ public class GenericExceptionMapper implements ExceptionMapper&lt;RuntimeExcepti
 
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-Ceci n'est qu'un exemple générique.
+<p><strong>Note</strong></p>
+<p>Ceci n'est qu'un exemple générique.
 Dans la réalité, il conviendra de capturer les erreurs avec de type bien définit au lieu de <code>java.lang.RuntimeException</code>.</p>
 </blockquote>
 <h2 id="usage">Usage</h2>
@@ -1005,6 +1011,7 @@ http://localhost:8080/dyna/api/v1/entity/customer/remove/cc32378c-784c-49be-926a
 <li>Ajouter une meilleure gestion des exceptions, car dans l'exemple, le message laisse trahir le fonctionnement interne de l'application.</li>
 <li>Ajouter un mécanisme de sécurisation de l'API.</li>
 <li>Ajouter un mécanisme pour prendre en compte des règles métiers spécifiques.</li>
+<li>Faire en sorte que les services consomment des <em>DTO</em> à la place d'un JSON au format <em>String</em> (cohérence d'architecture).</li>
 <li>Ajouter un filtre dynamique pour avoir une granularité plus fine lors des requêtes vers l'API (jusqu'au niveau d'un attribut). =&gt; Principe de juste suffisance.</li>
 </ul>
 <h2 id="conclusion">Conclusion</h2>

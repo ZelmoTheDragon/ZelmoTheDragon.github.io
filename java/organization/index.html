@@ -175,7 +175,7 @@ En Java les classes d'un même <em>package</em> n'ont pas besoin de s'importer m
 <strong>Plus une classe possède d'import de classe du même projet, plus sa cohésion est faible.</strong>
 <strong>Une classe possédant trop d'import indique également que la classe à trop de responsabilité, et donc qu'elle pourrait être découpée en de plus petites classes.</strong></p>
 <h2 id="organisation-par-couche">Organisation par couche</h2>
-<p>L'organisation par couche est la plus rependue auprès des développeurs, elle est également simple à mettre en place. En revanche les classes manques de cohésion entre elles.</p>
+<p>L'organisation par couche est la plus rependue auprès des développeurs, elle est également simple à mettre en place. En revanche les classes manquent de cohésion entre elles.</p>
 <p>Dans un projet <em>Jakarta EE</em> voici un exemple d'organisation :</p>
 <p>Partie <em>EJB</em> :</p>
 <pre><code> + fr.zelmoacademy.example
@@ -219,8 +219,8 @@ Bien entendu, vous pouvez décliner cette organisation en fonction du projet. Ou
 </blockquote>
 <h2 id="organisation-par-fonctionnalites">Organisation par fonctionnalités</h2>
 <p>L'organisation par fonctionnalité permet d'augmenter la cohésion entre les classes en les regroupant par traitement.
-Chaque fonctionnalités doit être indépendantes des autres, ce qui limite grandement les effets de bord.
-Mais elle nécessite un découpe métier beaucoup plus rigoureux.</p>
+Chaque fonctionnalité doit être indépendante des autres, ce qui limite grandement les effets de bord.
+Mais elle nécessite une découpe métier beaucoup plus rigoureux.</p>
 <p>Partie <em>EJB</em> :</p>
 <pre><code> + fr.zelmoacademy.example
    - common
